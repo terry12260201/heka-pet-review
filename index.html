@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HEKA 寵物｜Beagle 動畫審片室</title>
+<style>
+:root{
+  --bg:#17130D; --panel:#211B13; --panel2:#2B241A; --ink:#EFE6D6; --mut:#A3947C;
+  --line:#3D3426; --acc:#E5A44A; --accbg:#40331D;
+  --ok:#8FB37F; --okbg:#2E3A28; --warn:#D9A03B; --bad:#C97A5E; --badbg:#3E2A22;
+  --blue:#7FA6C9; --bluebg:#26313C;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--ink); margin:0;
+  font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.5;
+}
+.top{
+  display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+  padding:14px 20px; border-bottom:1px solid var(--line);
+}
+.top h1{font-size:1.15rem; margin:0}
+.top .sub{color:var(--mut); font-size:.8rem}
+.top .spacer{flex:1}
+.top button{font-size:.78rem}
+.layout{
+  display:grid; grid-template-columns: minmax(340px, 46%) 1fr;
+  gap:0; min-height:calc(100vh - 55px);
+}
+@media (max-width: 900px){ .layout{grid-template-columns:1fr} }
+/* ---- viewer ---- */
+.viewer{
+  position:sticky; top:0; align-self:start;
+  display:flex; flex-direction:column; height:calc(100vh - 55px);
+  border-right:1px solid var(--line); background:var(--panel);
+}
+@media (max-width: 900px){ .viewer{position:relative; height:60vh} }
+#stage{flex:1; min-height:0; position:relative}
+#stage canvas{display:block}
+#nowplaying{
+  position:absolute; top:10px; left:12px; font-size:.85rem; font-weight:700;
+  background:rgba(0,0,0,.45); padding:4px 10px; border-radius:6px;
+}
+#nowplaying small{display:block; font-weight:400; color:#D8CBB4; font-size:.72rem}
+.ctrl{
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  padding:10px 12px; border-top:1px solid var(--line); background:var(--panel2);
+}
+.ctrl button{
+  background:var(--accbg); color:var(--acc); border:1px solid var(--acc);
+  border-radius:6px; padding:5px 12px; cursor:pointer; font-size:.85rem;
+  font-family:inherit;
+}
+.ctrl button:hover{filter:brightness(1.2)}
+.ctrl button.off{opacity:.45; border-color:var(--line); color:var(--mut); background:transparent}
+.ctrl select{
+  background:var(--panel); color:var(--ink); border:1px solid var(--line);
+  border-radius:6px; padding:4px 6px; font-family:inherit;
+}
+#seek{flex:1; min-width:120px; accent-color:var(--acc)}
+#timelabel{font-size:.75rem; color:var(--mut); min-width:76px; text-align:right;
+  font-variant-numeric:tabular-nums}
+/* ---- list side ---- */
+.side{padding:16px 20px 40px; overflow-x:hidden}
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(105px,1fr)); gap:10px; margin-bottom:14px}
+.card{background:var(--panel2); border:1px solid var(--line); border-radius:9px; padding:10px 12px}
+.card .n{font-size:1.4rem; font-weight:700; font-variant-numeric:tabular-nums}
+.card .l{color:var(--mut); font-size:.72rem}
+.filters{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:10px}
+.filters .chip{
+  border:1px solid var(--line); background:var(--panel2); color:var(--mut);
+  border-radius:999px; padding:3px 12px; cursor:pointer; font-size:.78rem; font-family:inherit;
+}
+.filters .chip.on{border-color:var(--acc); color:var(--acc); background:var(--accbg)}
+.filters input[type=search]{
+  background:var(--panel2); border:1px solid var(--line); color:var(--ink);
+  border-radius:6px; padding:5px 10px; font-family:inherit; width:150px;
+}
+h2{font-size:.9rem; color:var(--mut); letter-spacing:.05em; margin:20px 0 8px}
+/* clip rows */
+.clip{
+  display:grid; grid-template-columns:96px 1fr auto; gap:12px; align-items:center;
+  background:var(--panel2); border:1px solid var(--line); border-radius:10px;
+  padding:8px 12px 8px 8px; margin-bottom:8px; cursor:pointer;
+}
+.clip:hover{border-color:var(--mut)}
+.clip.active{border-color:var(--acc); box-shadow:0 0 0 1px var(--acc)}
+.clip img{width:96px; height:67px; object-fit:cover; border-radius:6px; background:#000}
+.clip .meta .en{font-size:.83rem; font-weight:700}
+.clip .meta .zh{font-size:.8rem; color:var(--mut)}
+.clip .meta .zh b{color:var(--ink); font-weight:600}
+.tier{font-size:.7rem; font-weight:700; padding:1px 7px; border-radius:5px; margin-left:6px}
+.tier.P0{background:var(--accbg); color:var(--acc)}
+.tier.P1{background:var(--bluebg); color:var(--blue)}
+.tier.REF{background:var(--line); color:var(--mut)}
+.clip select{
+  background:var(--panel); border:1px solid var(--line); color:var(--ink);
+  border-radius:6px; padding:4px 6px; font-family:inherit; font-size:.78rem;
+}
+.clip select.s-qa,.clip select.s-confirmed{border-color:var(--ok); color:var(--ok)}
+.clip select.s-rework{border-color:var(--warn); color:var(--warn)}
+.clip select.s-cancelled{border-color:var(--bad); color:var(--bad)}
+/* milestones */
+.mile label{display:flex; gap:9px; align-items:center; font-size:.88rem; padding:4px 0; cursor:pointer}
+.mile input{accent-color:var(--ok); width:15px; height:15px}
+.mile label.done span{color:var(--mut); text-decoration:line-through}
+footer{color:var(--mut); font-size:.72rem; margin-top:24px; border-top:1px solid var(--line); padding-top:10px}
+.iobtn{
+  background:transparent; border:1px solid var(--line); color:var(--mut);
+  border-radius:6px; padding:4px 10px; cursor:pointer; font-family:inherit;
+}
+.iobtn:hover{color:var(--ink); border-color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>🐶 HEKA 寵物 — Beagle 動畫審片室</h1>
+  <div class="sub">點選右側動畫 → 左側 3D 即時播放｜狀態與里程碑會自動儲存在瀏覽器</div>
+  <div class="spacer"></div>
+  <button class="iobtn" id="exportBtn">匯出狀態 JSON</button>
+  <button class="iobtn" id="importBtn">匯入</button>
+  <input type="file" id="importFile" accept=".json" hidden>
+</div>
+<div class="layout">
+  <div class="viewer">
+    <div id="stage">
+      <div id="nowplaying">尚未選擇<small>點右側任一動畫開始</small></div>
+    </div>
+    <div class="ctrl">
+      <button id="playBtn">⏸ 暫停</button>
+      <button id="restartBtn">⟲ 重播</button>
+      <button id="loopBtn">🔁 循環：開</button>
+      <select id="speedSel">
+        <option value="0.25">0.25×</option>
+        <option value="0.5">0.5×</option>
+        <option value="1" selected>1×</option>
+        <option value="1.5">1.5×</option>
+      </select>
+      <input type="range" id="seek" min="0" max="1000" value="0">
+      <span id="timelabel">0.00 / 0.00s</span>
+    </div>
+  </div>
+  <div class="side">
+    <div class="cards" id="cards"></div>
+    <div class="filters" id="filters"></div>
+    <div id="cliplist"></div>
+    <h2>里程碑</h2>
+    <div class="mile" id="miles"></div>
+    <footer>
+      成品：Beagle_HEKA_WIP_02.blend（136 actions）｜GLB 內含 23 段動畫（22 新 + Idle 基準）。<br>
+      狀態存於本機瀏覽器（localStorage）；換裝置請用「匯出／匯入」同步。事實來源：progress.json。
+    </footer>
+  </div>
+</div>
+<script src="data.js"></script>
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.js","three/addons/loaders/GLTFLoader.js":"./vendor/GLTFLoader.js","three/addons/controls/OrbitControls.js":"./vendor/OrbitControls.js","three/addons/utils/BufferGeometryUtils.js":"./vendor/BufferGeometryUtils.js"}}
+</script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
