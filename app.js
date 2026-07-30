@@ -8,7 +8,24 @@ function loadState(){
   try { return JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch(e){ return {}; }
 }
 const state = Object.assign({statuses:{}, miles:{}}, loadState());
-function saveState(){ localStorage.setItem(LS_KEY, JSON.stringify(state)); }
+let toastTimer = null;
+function toast(msg){
+  let el = document.getElementById('savetoast');
+  if (!el){
+    el = document.createElement('div'); el.id = 'savetoast';
+    el.style.cssText = 'position:fixed;bottom:18px;right:18px;background:var(--okbg);color:var(--ok);'+
+      'border:1px solid var(--ok);border-radius:8px;padding:8px 16px;font-size:.85rem;z-index:99;'+
+      'transition:opacity .3s;pointer-events:none';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg; el.style.opacity = '1';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.style.opacity = '0', 1800);
+}
+function saveState(){
+  localStorage.setItem(LS_KEY, JSON.stringify(state));
+  toast('✓ 已儲存（存在這台瀏覽器）');
+}
 function statusOf(c){ return state.statuses[c.en] || (c.tier==='REF' ? 'ref' : 'done'); }
 
 /* ---------------- 3D 檢視器 ---------------- */
