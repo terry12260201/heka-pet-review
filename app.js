@@ -26,7 +26,12 @@ function saveState(){
   localStorage.setItem(LS_KEY, JSON.stringify(state));
   toast('✓ 已儲存（存在這台瀏覽器）');
 }
-function statusOf(c){ return state.statuses[c.en] || (c.tier==='REF' ? 'ref' : 'done'); }
+/* 共用狀態：repo 裡的 status.json（Claude 更新、大家看得到）。本機改的會蓋在上面。 */
+let shared = {statuses:{}, miles:{}};
+function statusOf(c){
+  return state.statuses[c.en] || (shared.statuses[c.en] && shared.statuses[c.en].status) || (c.tier==='REF' ? 'ref' : 'done');
+}
+function noteOf(c){ const s = shared.statuses[c.en]; return s && s.note ? s.note : ''; }
 
 /* ---------------- 3D 檢視器 ---------------- */
 const stage = document.getElementById('stage');
@@ -55,7 +60,9 @@ new GLTFLoader().load('beagle.glb', (g) => {
   scene.add(g.scene);
   mixer = new THREE.AnimationMixer(g.scene);
   for (const cl of g.animations) actions[cl.name] = mixer.clipAction(cl);
-  playClip('Idle_1');
+  // 網址加 #clip=動畫名 可以直接開到那一支（方便貼連結給同事）
+  const want = decodeURIComponent((location.hash.match(/clip=([^&]+)/) || [])[1] || '');
+  playClip(actions[want] ? want : 'Idle_1');
 });
 
 function playClip(name){
@@ -74,7 +81,20 @@ function playClip(name){
     `Arm_Beagle|${name}<small>${c ? c.zh + '｜' + c.desc : ''}</small>`;
   document.querySelectorAll('.clip').forEach(el =>
     el.classList.toggle('active', el.dataset.en === name));
+  cmpBtn.style.display = (c && c.compare) ? 'inline-block' : 'none';
+  showCompare(false);
 }
+
+/* 對照影片（AI 影片｜Blender｜疊圖） */
+const cmpBtn = document.getElementById('cmpBtn');
+const cmpWrap = document.getElementById('cmpwrap'), cmpVideo = document.getElementById('cmpvideo');
+function showCompare(on){
+  cmpWrap.classList.toggle('on', on);
+  cmpBtn.textContent = on ? '🧊 回 3D 預覽' : '🎞 對照 AI 影片';
+  if (on){ const c = CLIPS.find(x => x.en === current); cmpVideo.src = c.compare; cmpVideo.play(); }
+  else cmpVideo.pause();
+}
+cmpBtn.onclick = () => showCompare(!cmpWrap.classList.contains('on'));
 
 /* 控制列 */
 const playBtn = document.getElementById('playBtn');
@@ -176,8 +196,9 @@ function renderList(){
     return `<div class="clip ${current===c.en?'active':''}" data-en="${c.en}">
       <img src="thumbs/${c.en}.png" alt="${c.zh}" loading="lazy">
       <div class="meta">
-        <div class="en">${c.id ? String(c.id).padStart(2,'0')+' ' : ''}${c.en}<span class="tier ${c.tier}">${c.tier}</span></div>
+        <div class="en">${c.id ? String(c.id).padStart(2,'0')+' ' : ''}${c.en}<span class="tier ${c.tier}">${c.tier}</span>${c.method==='video' ? '<span class="badge-video">AI 影片對位</span>' : ''}</div>
         <div class="zh"><b>${c.zh}</b>｜${c.desc}<span style="color:var(--mut)">｜${c.frames}f</span></div>
+        ${noteOf(c) ? `<div class="note">📝 ${noteOf(c)}</div>` : ''}
       </div>
       ${sel}
     </div>`;
@@ -196,7 +217,7 @@ function renderList(){
 function renderMiles(){
   const el = document.getElementById('miles');
   el.innerHTML = MILESTONES.map((m, i) => {
-    const done = state.miles[i] !== undefined ? state.miles[i] : DEFAULT_MILES[i];
+    const done = state.miles[i] !== undefined ? state.miles[i] : (shared.miles[i] !== undefined ? shared.miles[i] : DEFAULT_MILES[i]);
     return `<label class="${done?'done':''}"><input type="checkbox" data-i="${i}" ${done?'checked':''}><span>${m}</span></label>`;
   }).join('');
   el.querySelectorAll('input').forEach(cb => {
@@ -221,4 +242,22 @@ document.getElementById('importFile').onchange = (e) => {
   });
 };
 
+/* 角色、下載、咒語 */
+document.getElementById('chars').innerHTML = CHARACTERS.map(c =>
+  `<div class="char ${c.status}"><span style="font-size:1.3rem">${c.icon}</span><div><b>${c.name}</b><small>${c.note}</small></div></div>`).join('');
+document.getElementById('downloads').innerHTML = DOWNLOADS.map(d =>
+  `<a href="${d.file}" download><span>⬇ ${d.label}</span><small>${d.note}</small></a>`).join('');
+document.getElementById('spells').innerHTML = SPELLS.map((s, i) =>
+  `<div class="spell"><div class="h"><span>${s.t}</span><button data-i="${i}">複製</button></div><p>${s.s}</p></div>`).join('');
+document.querySelectorAll('#spells button').forEach(b => b.onclick = () => {
+  const txt = SPELLS[b.dataset.i].s;
+  (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject()).then(
+    () => toast('✓ 已複製，貼給 Claude Code'), () => toast('複製失敗，請手動選取文字'));
+});
+
 renderFilters(); renderCards(); renderList(); renderMiles(); resize();
+fetch('status.json', {cache:'no-store'}).then(r => r.json()).then(j => {
+  shared = Object.assign({statuses:{}, miles:{}}, j);
+  document.getElementById('sharedinfo').textContent = `共用狀態更新於 ${j.updated || '—'}（${j.updated_by || ''}）`;
+  renderCards(); renderList(); renderMiles();
+}).catch(() => { document.getElementById('sharedinfo').textContent = '讀不到 status.json（本機直接開檔時正常），顯示預設狀態'; });

@@ -112,12 +112,36 @@ footer{color:var(--mut); font-size:.72rem; margin-top:24px; border-top:1px solid
   border-radius:6px; padding:4px 10px; cursor:pointer; font-family:inherit;
 }
 .iobtn:hover{color:var(--ink); border-color:var(--mut)}
+.chars{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px}
+.char{display:flex; align-items:center; gap:8px; background:var(--panel2); border:1px solid var(--line);
+  border-radius:10px; padding:7px 12px; font-size:.82rem}
+.char.live{border-color:var(--acc)}
+.char.planned{opacity:.55; border-style:dashed}
+.char small{color:var(--mut); display:block; font-size:.7rem}
+.badge-video{font-size:.68rem; font-weight:700; padding:1px 7px; border-radius:5px; margin-left:6px;
+  background:var(--okbg); color:var(--ok)}
+.note{font-size:.74rem; color:var(--warn); margin-top:3px}
+.dl a{display:flex; justify-content:space-between; gap:12px; align-items:baseline; text-decoration:none;
+  color:var(--ink); background:var(--panel2); border:1px solid var(--line); border-radius:8px;
+  padding:8px 12px; margin-bottom:6px; font-size:.84rem}
+.dl a:hover{border-color:var(--acc)}
+.dl a small{color:var(--mut); font-size:.72rem}
+.spell{background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:9px 12px; margin-bottom:6px}
+.spell .h{display:flex; justify-content:space-between; align-items:center; font-size:.84rem; font-weight:700}
+.spell p{margin:5px 0 0; font-size:.78rem; color:var(--mut)}
+.spell button{background:var(--accbg); color:var(--acc); border:1px solid var(--acc); border-radius:6px;
+  padding:2px 10px; cursor:pointer; font-size:.74rem; font-family:inherit}
+#cmpwrap{position:absolute; inset:0; background:rgba(0,0,0,.88); display:none; align-items:center; justify-content:center; z-index:5}
+#cmpwrap.on{display:flex}
+#cmpwrap video{max-width:96%; max-height:92%; border-radius:8px}
+#cmpBtn{display:none}
+#sharedinfo{color:var(--mut); font-size:.72rem; margin:-6px 0 12px}
 </style>
 </head>
 <body>
 <div class="top">
   <h1>🐶 HEKA 寵物 — Beagle 動畫審片室</h1>
-  <div class="sub">點選右側動畫 → 左側 3D 即時播放｜狀態與里程碑會自動儲存在瀏覽器</div>
+  <div class="sub">點選右側動畫 → 左側 3D 即時播放｜可下載模型、看 AI 影片對照、標 QA 狀態</div>
   <div class="spacer"></div>
   <button class="iobtn" id="exportBtn">匯出狀態 JSON</button>
   <button class="iobtn" id="importBtn">匯入</button>
@@ -127,11 +151,13 @@ footer{color:var(--mut); font-size:.72rem; margin-top:24px; border-top:1px solid
   <div class="viewer">
     <div id="stage">
       <div id="nowplaying">尚未選擇<small>點右側任一動畫開始</small></div>
+      <div id="cmpwrap"><video id="cmpvideo" loop muted playsinline controls></video></div>
     </div>
     <div class="ctrl">
       <button id="playBtn">⏸ 暫停</button>
       <button id="restartBtn">⟲ 重播</button>
       <button id="loopBtn">🔁 循環：開</button>
+      <button id="cmpBtn">🎞 對照 AI 影片</button>
       <select id="speedSel">
         <option value="0.25">0.25×</option>
         <option value="0.5">0.5×</option>
@@ -143,14 +169,21 @@ footer{color:var(--mut); font-size:.72rem; margin-top:24px; border-top:1px solid
     </div>
   </div>
   <div class="side">
+    <div class="chars" id="chars"></div>
     <div class="cards" id="cards"></div>
+    <div id="sharedinfo"></div>
     <div class="filters" id="filters"></div>
     <div id="cliplist"></div>
     <h2>里程碑</h2>
     <div class="mile" id="miles"></div>
+    <h2>下載</h2>
+    <div class="dl" id="downloads"></div>
+    <h2>跟 Claude 說什麼（點「複製」貼給 Claude Code）</h2>
+    <div id="spells"></div>
     <footer>
-      成品：Beagle_HEKA_WIP_02.blend（136 actions）｜GLB 內含 23 段動畫（22 新 + Idle 基準）。<br>
-      狀態存於本機瀏覽器（localStorage）；換裝置請用「匯出／匯入」同步。事實來源：progress.json。
+      GLB 內含 28 段動畫（26 支手 K＋1 支 AI 影片對位＋Idle 基準）。<br>
+      共用狀態來自 status.json（請 Claude 更新並推上來，大家都看得到）；你在這頁改的狀態只存在這台瀏覽器，要分享請用「匯出」。<br>
+      AI 影片對位的做法：<a href="https://github.com/terry12260201/ai-video-to-bones" style="color:var(--acc)">ai-video-to-bones</a>
     </footer>
   </div>
 </div>

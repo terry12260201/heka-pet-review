@@ -26,6 +26,7 @@ const CLIPS = [
   {id:23, en:"Spin_Chase",        zh:"原地追尾繞圈", desc:"身體弓成弧、回頭追自己尾巴轉整圈，帶小彈跳（可循環）", tier:"P0", frames:"1-60"},
   {id:24, en:"Beg_Play",          zh:"期待陪玩撒嬌", desc:"邀玩鞠躬扭屁股→往前撲跳→輪流抬爪討玩→再鞠躬（可循環）", tier:"P0", frames:"1-70"},
   {id:25, en:"Hungry_Beg",        zh:"肚子餓討食", desc:"坐立起身、雙前爪舉起、抬頭盯主人、舔嘴（可循環）", tier:"P0", frames:"1-60"},
+  {id:27, en:"Walk_AIVideo_Loop", zh:"走路循環（AI 影片對位）", desc:"照 AI 生成的側面走路影片逐格對骨架，20 格一圈（可循環）", tier:"P0", frames:"1-21", method:"video", compare:"media/Walk_AIVideo_Loop.mp4"},
   {id:26, en:"Sick_Lie",          zh:"不舒服", desc:"蜷縮趴臥、耳貼平、尾內收、淺呼吸帶發抖（可循環）", tier:"P0", frames:"1-90"}
 ];
 const STATUS_OPTS = [
@@ -41,6 +42,31 @@ const MILESTONES = [
   "22 支動畫製作（P0+P1）",
   "QA 逐支驗收",
   "匯出 FBX → Unity 驗證",
-  "貓／龍複製此流程"
+  "貓／龍複製此流程",
+  "AI 影片對位流程建立（走路循環首測）"
 ];
-const DEFAULT_MILES = [true, true, false, false, false];
+const DEFAULT_MILES = [true, true, false, false, false, false];
+
+// 角色清單：live = 已有模型與動畫；planned = 規劃中
+const CHARACTERS = [
+  {key:"beagle", name:"Beagle 小獵犬", icon:"🐶", status:"live",    note:"28 段動畫"},
+  {key:"cat",    name:"貓",            icon:"🐱", status:"planned", note:"規劃中"},
+  {key:"dragon", name:"龍",            icon:"🐲", status:"planned", note:"規劃中"}
+];
+
+// 下載區
+const DOWNLOADS = [
+  {file:"beagle.glb",                     label:"GLB（網頁／Three.js）", note:"28 段動畫，含走路循環"},
+  {file:"model/Beagle_HEKA.blend",        label:"Blender 專案",          note:"28 段動畫，含走路循環"},
+  {file:"model/Beagle_HEKA.fbx",          label:"FBX（Unity／UE）",      note:"27 段，尚未含走路循環"},
+  {file:"model/Cartoon_Beagle_Albedo.png",label:"顏色貼圖 2048",         note:"PNG"}
+];
+
+// 跟 Claude 說什麼：點一下複製，貼給 Claude Code 就會動起來
+const SPELLS = [
+  {t:"做一支新動畫", s:"用 ai-video-to-bones 幫 Beagle 做一支「〈動作，例如：小跑〉」動畫。先給我側面參考圖和影片 Prompt，我生完影片再丟給你。"},
+  {t:"影片生好了",   s:"影片生好了，在〈檔案路徑〉。照 ai-video-to-bones 流程做成循環動畫，放進審片室，狀態標待 QA。"},
+  {t:"修某一格",     s:"審片室的 Walk_AIVideo_Loop：第〈幾〉格，〈近前／遠前／近後／遠後〉腳〈太前面／太後面／腳尖翹起來〉。修好後更新審片室。"},
+  {t:"更新 QA 狀態", s:"把審片室的〈動畫英文名〉標成〈QA通過／修改中／取消〉，備註：〈一句話〉。更新 status.json 並推上去。"},
+  {t:"加新角色",     s:"我要在審片室加一個新角色「〈名稱〉」。模型檔在〈路徑〉（要綁好骨架的 .glb）。先幫我檢查骨架，列出可以直接沿用的動作和要新做的動作。"}
+];

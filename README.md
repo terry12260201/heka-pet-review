@@ -8,6 +8,22 @@
 
 **▶ 線上審片室：<https://terry12260201.github.io/heka-pet-review/>**
 
+> **2026-10-04 更新**：新增第 28 段動畫 `Walk_AIVideo_Loop`（走路循環）。這支不是手 K，是照 AI 生成的側面影片逐格對骨架做出來的，做法與程式在 [ai-video-to-bones](https://github.com/terry12260201/ai-video-to-bones)。直接看這一支：<https://terry12260201.github.io/heka-pet-review/#clip=Walk_AIVideo_Loop>，按「🎞 對照 AI 影片」可以跟原影片並排比。
+>
+> 審片室同時加了：模型下載區、共用 QA 狀態（`status.json`）、角色清單、「跟 Claude 說什麼」咒語區。`beagle.glb` 與 `.blend` 已含 28 段；`.fbx` 仍是 27 段，尚未含走路循環。
+
+## 🤝 同事怎麼用
+
+| 你想做的事 | 怎麼做 |
+|---|---|
+| 看現在做到哪 | 打開審片室，點右側任一支動畫，左邊 3D 直接播 |
+| 下載模型 | 審片室往下捲到「下載」 |
+| 標 QA 結果讓大家看到 | 跟 Claude 說「把〈動畫名〉標成 QA 通過／修改中，備註…」，它會改 `status.json` 並推上來 |
+| 要一支新動畫 | 複製審片室最下面「做一支新動畫」那句貼給 Claude |
+| 加新角色 | 複製「加新角色」那句貼給 Claude |
+
+你在網頁上直接改的狀態只存在自己的瀏覽器；`status.json` 才是大家共用的那份。
+
 ![動畫預覽：邀玩鞠躬、原地追尾、肚子餓討食、翻肚循環](docs/images/demo.gif)
 
 ---

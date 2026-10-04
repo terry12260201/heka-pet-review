@@ -1,0 +1,8 @@
+{
+  "updated": "2026-10-04",
+  "updated_by": "Claude（南瓜交辦）",
+  "statuses": {
+    "Walk_AIVideo_Loop": {"status": "done", "note": "AI 影片對位首測。剪影重疊率平均 0.90；遠側後腳有幾格腳尖朝下，待人眼驗收。", "date": "2026-10-04"}
+  },
+  "miles": {"5": true}
+}
