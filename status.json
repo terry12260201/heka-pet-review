@@ -1,8 +1,18 @@
 {
-  "updated": "2026-10-04",
-  "updated_by": "Claude（南瓜交辦）",
+  "updated": "2026-10-04 22:50",
+  "updated_by": "Claude",
   "statuses": {
-    "Walk_AIVideo_Loop": {"status": "done", "note": "AI 影片對位首測。剪影重疊率平均 0.90；遠側後腳有幾格腳尖朝下，待人眼驗收。", "date": "2026-10-04"}
+    "Walk_AIVideo_Loop": {"status": "done", "note": "照 AI 影片對骨架的第一支。剪影重疊率平均 0.90；遠側後腳有幾格腳尖朝下，等人眼驗收。", "date": "2026-10-04"}
   },
+  "queue": [
+    {"en": "Walk_AIVideo_Loop", "zh": "走路循環", "stage": "qa",    "info": "5 秒影片 → 20 格一圈", "note": "已可預覽，等人眼驗收"},
+    {"en": "Trot_AIVideo_Loop", "zh": "小跑循環", "stage": "video", "info": "720p · 5 秒",  "note": "10/4 22:32 送出，影片生成中"},
+    {"en": "Run_AIVideo_Loop",  "zh": "奔跑循環", "stage": "video", "info": "720p · 10 秒", "note": "10/4 22:33 送出，影片生成中"},
+    {"en": "Sit_AIVideo",       "zh": "坐下",     "stage": "video", "info": "720p · 5 秒",  "note": "10/4 22:34 送出，影片生成中。一次性動作，對位程式還要補"},
+    {"en": "LieDown_AIVideo",   "zh": "趴下",     "stage": "video", "info": "720p · 10 秒", "note": "10/4 22:34 送出，影片生成中。一次性動作，對位程式還要補"},
+    {"en": "Stretch_AIVideo",   "zh": "伸懶腰",   "stage": "video", "info": "720p · 10 秒", "note": "10/4 22:34 送出，影片生成中。一次性動作，對位程式還要補"},
+    {"en": "Sniff_AIVideo",     "zh": "低頭嗅聞", "stage": "video", "info": "720p · 5 秒",  "note": "10/4 22:35 送出，影片生成中。一次性動作，對位程式還要補"},
+    {"en": "Eat_AIVideo",       "zh": "吃東西",   "stage": "video", "info": "720p · 10 秒", "note": "10/4 22:35 送出，影片生成中。一次性動作，對位程式還要補"}
+  ],
   "miles": {"5": true}
 }

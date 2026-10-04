@@ -8,7 +8,11 @@
 
 **▶ 線上審片室：<https://terry12260201.github.io/heka-pet-review/>**
 
-> **2026-10-04 更新**：新增第 28 段動畫 `Walk_AIVideo_Loop`（走路循環）。這支不是手 K，是照 AI 生成的側面影片逐格對骨架做出來的，做法與程式在 [ai-video-to-bones](https://github.com/terry12260201/ai-video-to-bones)。直接看這一支：<https://terry12260201.github.io/heka-pet-review/#clip=Walk_AIVideo_Loop>，按「🎞 對照 AI 影片」可以跟原影片並排比。
+> **V02（2026-10-04）**：審片室改用[南瓜墨金美學](https://github.com/terry12260201/pumpkin-ink-gold)重做，分成「動畫／生產線／下載／怎麼用」四個分頁，新增**生產線看板**（每支動畫走到提需求→生影片→對骨架→待驗收→通過的哪一站）與日夜模式。舊版深色介面保留在 git tag `v1-dark`。
+>
+> ![V02 生產線分頁](docs/images/v02-line.png)
+>
+> **同日更新**：新增第 28 段動畫 `Walk_AIVideo_Loop`（走路循環）。這支不是手 K，是照 AI 生成的側面影片逐格對骨架做出來的，做法與程式在 [ai-video-to-bones](https://github.com/terry12260201/ai-video-to-bones)。直接看這一支：<https://terry12260201.github.io/heka-pet-review/#clip=Walk_AIVideo_Loop>，按「🎞 對照 AI 影片」可以跟原影片並排比。
 >
 > 審片室同時加了：模型下載區、共用 QA 狀態（`status.json`）、角色清單、「跟 Claude 說什麼」咒語區。`beagle.glb` 與 `.blend` 已含 28 段；`.fbx` 仍是 27 段，尚未含走路循環。
 

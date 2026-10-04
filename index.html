@@ -3,194 +3,254 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HEKA 寵物｜Beagle 動畫審片室</title>
+<title>Beagle 動畫審片室 V02｜HEKA 寵物</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23161415%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%276%27 fill=%27%23FDC302%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendor/ink-gold.css">
 <style>
-:root{
-  --bg:#17130D; --panel:#211B13; --panel2:#2B241A; --ink:#EFE6D6; --mut:#A3947C;
-  --line:#3D3426; --acc:#E5A44A; --accbg:#40331D;
-  --ok:#8FB37F; --okbg:#2E3A28; --warn:#D9A03B; --bad:#C97A5E; --badbg:#3E2A22;
-  --blue:#7FA6C9; --bluebg:#26313C;
-}
-*{box-sizing:border-box}
-body{
-  background:var(--bg); color:var(--ink); margin:0;
-  font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
-  line-height:1.5;
-}
-.top{
-  display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
-  padding:14px 20px; border-bottom:1px solid var(--line);
-}
-.top h1{font-size:1.15rem; margin:0}
-.top .sub{color:var(--mut); font-size:.8rem}
-.top .spacer{flex:1}
-.top button{font-size:.78rem}
-.layout{
-  display:grid; grid-template-columns: minmax(340px, 46%) 1fr;
-  gap:0; min-height:calc(100vh - 55px);
-}
-@media (max-width: 900px){ .layout{grid-template-columns:1fr} }
-/* ---- viewer ---- */
-.viewer{
-  position:sticky; top:0; align-self:start;
-  display:flex; flex-direction:column; height:calc(100vh - 55px);
-  border-right:1px solid var(--line); background:var(--panel);
-}
-@media (max-width: 900px){ .viewer{position:relative; height:60vh} }
-#stage{flex:1; min-height:0; position:relative}
+/* 審片室 V02 · 墨金「工作區」版型：名稱與狀態 → 操作 → 結果。只補這一頁需要的排版，顏色全走墨金 token。 */
+.rr-wrap{width:100%;max-width:1328px;margin:0 auto;padding:0 24px 56px}
+.rr-head{display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap;margin:28px 0 18px}
+.rr-head h1{font:600 28px/1.3 var(--ig-font-sans);margin:0;color:var(--ig-ink);letter-spacing:0}
+.rr-head p{margin:6px 0 0;font-size:14px;line-height:1.7;color:var(--ig-ink-muted);max-width:56ch}
+.rr-kicker{font:500 12px/1 var(--ig-font-mono);color:var(--ig-label-readable);margin-bottom:8px;display:block}
+.rr-stats{display:flex;gap:12px;margin-left:auto;flex-wrap:wrap}
+.rr-stat{background:var(--ig-card);border:1px solid var(--ig-ink-hairline);border-radius:var(--ig-r-card);padding:10px 16px;min-width:92px}
+.rr-stat b{display:block;font:500 22px/1.15 var(--ig-font-mono);color:var(--ig-ink)}
+.rr-stat span{font-size:12px;color:var(--ig-label-readable)}
+.rr-main{display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);gap:20px;align-items:start}
+/* 深炭舞台：3D 預覽。日夜模式都維持深色，模型才看得清楚 */
+.rr-stage{position:sticky;top:96px;height:calc(100vh - 256px);min-height:420px;display:flex;flex-direction:column;
+  background:var(--ig-night-gradient);border-radius:var(--ig-r-xl);box-shadow:var(--ig-shadow-stage);overflow:hidden;color:#fff}
+#stage{flex:1;min-height:0;position:relative}
 #stage canvas{display:block}
-#nowplaying{
-  position:absolute; top:10px; left:12px; font-size:.85rem; font-weight:700;
-  background:rgba(0,0,0,.45); padding:4px 10px; border-radius:6px;
-}
-#nowplaying small{display:block; font-weight:400; color:#D8CBB4; font-size:.72rem}
-.ctrl{
-  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
-  padding:10px 12px; border-top:1px solid var(--line); background:var(--panel2);
-}
-.ctrl button{
-  background:var(--accbg); color:var(--acc); border:1px solid var(--acc);
-  border-radius:6px; padding:5px 12px; cursor:pointer; font-size:.85rem;
-  font-family:inherit;
-}
-.ctrl button:hover{filter:brightness(1.2)}
-.ctrl button.off{opacity:.45; border-color:var(--line); color:var(--mut); background:transparent}
-.ctrl select{
-  background:var(--panel); color:var(--ink); border:1px solid var(--line);
-  border-radius:6px; padding:4px 6px; font-family:inherit;
-}
-#seek{flex:1; min-width:120px; accent-color:var(--acc)}
-#timelabel{font-size:.75rem; color:var(--mut); min-width:76px; text-align:right;
-  font-variant-numeric:tabular-nums}
-/* ---- list side ---- */
-.side{padding:16px 20px 40px; overflow-x:hidden}
-.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(105px,1fr)); gap:10px; margin-bottom:14px}
-.card{background:var(--panel2); border:1px solid var(--line); border-radius:9px; padding:10px 12px}
-.card .n{font-size:1.4rem; font-weight:700; font-variant-numeric:tabular-nums}
-.card .l{color:var(--mut); font-size:.72rem}
-.filters{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:10px}
-.filters .chip{
-  border:1px solid var(--line); background:var(--panel2); color:var(--mut);
-  border-radius:999px; padding:3px 12px; cursor:pointer; font-size:.78rem; font-family:inherit;
-}
-.filters .chip.on{border-color:var(--acc); color:var(--acc); background:var(--accbg)}
-.filters input[type=search]{
-  background:var(--panel2); border:1px solid var(--line); color:var(--ink);
-  border-radius:6px; padding:5px 10px; font-family:inherit; width:150px;
-}
-h2{font-size:.9rem; color:var(--mut); letter-spacing:.05em; margin:20px 0 8px}
-/* clip rows */
-.clip{
-  display:grid; grid-template-columns:96px 1fr auto; gap:12px; align-items:center;
-  background:var(--panel2); border:1px solid var(--line); border-radius:10px;
-  padding:8px 12px 8px 8px; margin-bottom:8px; cursor:pointer;
-}
-.clip:hover{border-color:var(--mut)}
-.clip.active{border-color:var(--acc); box-shadow:0 0 0 1px var(--acc)}
-.clip img{width:96px; height:67px; object-fit:cover; border-radius:6px; background:#000}
-.clip .meta .en{font-size:.83rem; font-weight:700}
-.clip .meta .zh{font-size:.8rem; color:var(--mut)}
-.clip .meta .zh b{color:var(--ink); font-weight:600}
-.tier{font-size:.7rem; font-weight:700; padding:1px 7px; border-radius:5px; margin-left:6px}
-.tier.P0{background:var(--accbg); color:var(--acc)}
-.tier.P1{background:var(--bluebg); color:var(--blue)}
-.tier.REF{background:var(--line); color:var(--mut)}
-.clip select{
-  background:var(--panel); border:1px solid var(--line); color:var(--ink);
-  border-radius:6px; padding:4px 6px; font-family:inherit; font-size:.78rem;
-}
-.clip select.s-qa,.clip select.s-confirmed{border-color:var(--ok); color:var(--ok)}
-.clip select.s-rework{border-color:var(--warn); color:var(--warn)}
-.clip select.s-cancelled{border-color:var(--bad); color:var(--bad)}
-/* milestones */
-.mile label{display:flex; gap:9px; align-items:center; font-size:.88rem; padding:4px 0; cursor:pointer}
-.mile input{accent-color:var(--ok); width:15px; height:15px}
-.mile label.done span{color:var(--mut); text-decoration:line-through}
-footer{color:var(--mut); font-size:.72rem; margin-top:24px; border-top:1px solid var(--line); padding-top:10px}
-.iobtn{
-  background:transparent; border:1px solid var(--line); color:var(--mut);
-  border-radius:6px; padding:4px 10px; cursor:pointer; font-family:inherit;
-}
-.iobtn:hover{color:var(--ink); border-color:var(--mut)}
-.chars{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px}
-.char{display:flex; align-items:center; gap:8px; background:var(--panel2); border:1px solid var(--line);
-  border-radius:10px; padding:7px 12px; font-size:.82rem}
-.char.live{border-color:var(--acc)}
-.char.planned{opacity:.55; border-style:dashed}
-.char small{color:var(--mut); display:block; font-size:.7rem}
-.badge-video{font-size:.68rem; font-weight:700; padding:1px 7px; border-radius:5px; margin-left:6px;
-  background:var(--okbg); color:var(--ok)}
-.note{font-size:.74rem; color:var(--warn); margin-top:3px}
-.dl a{display:flex; justify-content:space-between; gap:12px; align-items:baseline; text-decoration:none;
-  color:var(--ink); background:var(--panel2); border:1px solid var(--line); border-radius:8px;
-  padding:8px 12px; margin-bottom:6px; font-size:.84rem}
-.dl a:hover{border-color:var(--acc)}
-.dl a small{color:var(--mut); font-size:.72rem}
-.spell{background:var(--panel2); border:1px solid var(--line); border-radius:8px; padding:9px 12px; margin-bottom:6px}
-.spell .h{display:flex; justify-content:space-between; align-items:center; font-size:.84rem; font-weight:700}
-.spell p{margin:5px 0 0; font-size:.78rem; color:var(--mut)}
-.spell button{background:var(--accbg); color:var(--acc); border:1px solid var(--acc); border-radius:6px;
-  padding:2px 10px; cursor:pointer; font-size:.74rem; font-family:inherit}
-#cmpwrap{position:absolute; inset:0; background:rgba(0,0,0,.88); display:none; align-items:center; justify-content:center; z-index:5}
+#nowplaying{position:absolute;top:18px;left:20px;right:20px;pointer-events:none}
+#nowplaying b{display:block;font:600 17px/1.4 var(--ig-font-sans)}
+#nowplaying code{font:400 12px/1.5 var(--ig-font-mono);color:var(--ig-on-night-soft)}
+#nowplaying small{display:block;font-size:13px;line-height:1.6;color:var(--ig-on-night-muted);max-width:44ch;margin-top:2px}
+#cmpwrap{position:absolute;inset:0;background:rgba(26,24,25,.94);display:none;align-items:center;justify-content:center;z-index:5}
 #cmpwrap.on{display:flex}
-#cmpwrap video{max-width:96%; max-height:92%; border-radius:8px}
+#cmpwrap video{max-width:96%;max-height:90%;border-radius:12px}
+.rr-ctrl{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--ig-night-line);background:rgba(0,0,0,.14)}
+.rr-cbtn{height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);
+  color:#fff;font:500 13px/1 var(--ig-font-sans);cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.rr-cbtn:hover{background:rgba(255,255,255,.12)}
+.rr-cbtn[aria-pressed="false"]{color:var(--ig-on-night-soft)}
+.rr-cbtn:focus-visible,.rr-row:focus-visible,.rr-tab:focus-visible{outline:2px solid var(--ig-focus-ink);outline-offset:2px;box-shadow:var(--ig-focus)}
+.rr-ctrl select{height:36px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:#2D2B2C;color:#fff;padding:0 10px;font:400 13px/1 var(--ig-font-sans)}
+#seek{flex:1;min-width:110px;accent-color:#F7F7F7}
+#timelabel{font:400 12px/1 var(--ig-font-mono);color:var(--ig-on-night-soft);min-width:84px;text-align:right}
 #cmpBtn{display:none}
-#sharedinfo{color:var(--mut); font-size:.72rem; margin:-6px 0 12px}
+/* 右側工作區 */
+.rr-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.rr-tab{height:36px;padding:0 16px;border-radius:999px;border:1px solid var(--ig-ink-hairline);background:var(--ig-card);
+  color:var(--ig-ink-muted);font:500 14px/1 var(--ig-font-sans);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.rr-tab:hover{border-color:var(--ig-ink-faint);color:var(--ig-ink)}
+.rr-tab[aria-selected="true"]{background:var(--ig-ink);border-color:var(--ig-ink);color:var(--ig-paper)}
+.rr-tab i{font:400 12px/1 var(--ig-font-mono);font-style:normal;opacity:.7}
+.rr-panel[hidden]{display:none}
+.rr-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.rr-tools .ig-search{height:40px;flex:1;min-width:180px}
+.rr-tools .ig-search input{font-size:14px}
+.rr-chip{height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--ig-ink-hairline);background:var(--ig-card);
+  color:var(--ig-ink-muted);font:400 13px/1 var(--ig-font-sans);cursor:pointer}
+.rr-chip[aria-pressed="true"]{background:var(--ig-ink);border-color:var(--ig-ink);color:var(--ig-paper)}
+.rr-list{display:grid;gap:12px}
+.rr-row{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:16px;align-items:center;background:var(--ig-card);
+  border:1px solid var(--ig-ink-hairline);border-radius:var(--ig-r-card);padding:16px;cursor:pointer;
+  transition:transform var(--ig-base) var(--ig-ease),border-color var(--ig-base) var(--ig-ease)}
+.rr-row:hover{transform:translateY(-1px);border-color:var(--ig-ink-faint)}
+.rr-row.is-active{border-color:var(--ig-ink);box-shadow:0 0 0 1px var(--ig-ink)}
+.rr-row img{width:76px;height:76px;object-fit:cover;border-radius:12px;background:#242223}
+.rr-row h3{margin:0;font:600 17px/1.45 var(--ig-font-sans);color:var(--ig-ink);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.rr-row code{font:400 12px/1.5 var(--ig-font-mono);color:var(--ig-label-readable)}
+.rr-row p{margin:2px 0 0;font-size:14px;line-height:1.65;color:var(--ig-ink-muted)}
+.rr-note{margin-top:6px!important;font-size:13px!important;color:var(--ig-gold-deep)!important}
+.rr-tagx{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;font:500 12px/1 var(--ig-font-sans);
+  background:var(--ig-ink-wash);color:var(--ig-label-readable)}
+.rr-tagx.video{background:var(--ig-mark-blue);color:#161415}
+.rr-status{height:36px;border-radius:999px;border:1px solid var(--ig-ink-hairline);background:var(--ig-card);color:var(--ig-ink);
+  padding:0 10px;font:500 13px/1 var(--ig-font-sans);cursor:pointer}
+.rr-status.s-qa,.rr-status.s-confirmed{border-color:var(--ig-success);color:var(--ig-success)}
+.rr-status.s-rework{border-color:var(--ig-gold-deep);color:var(--ig-gold-deep)}
+.rr-status.s-cancelled{border-color:var(--ig-danger);color:var(--ig-danger)}
+.rr-empty{padding:32px;text-align:center;color:var(--ig-ink-muted);background:var(--ig-card);border:1px dashed var(--ig-ink-faint);border-radius:var(--ig-r-card)}
+.rr-h2{font:700 15px/1.5 var(--ig-font-sans);color:var(--ig-ink);margin:22px 0 10px}
+.rr-h2:first-child{margin-top:0}
+.rr-sub{font-size:13px;color:var(--ig-label-readable);margin:-6px 0 12px;line-height:1.6}
+.rr-card{background:var(--ig-card);border:1px solid var(--ig-ink-hairline);border-radius:var(--ig-r-card);padding:16px}
+/* 生產線 */
+.rr-q{display:grid;gap:12px}
+.rr-qi{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:center}
+.rr-qi h3{margin:0;font:600 16px/1.45 var(--ig-font-sans)}
+.rr-qi p{margin:0;font-size:13px;color:var(--ig-ink-muted);line-height:1.6}
+.rr-steps{grid-column:1/-1;display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:6px}
+.rr-step{font-size:12px;color:var(--ig-ink-soft);padding-top:8px;border-top:3px solid var(--ig-ink-hairline);line-height:1.4}
+.rr-step.done{border-color:var(--ig-ink-soft);color:var(--ig-label-readable)}
+.rr-step.now{border-color:var(--ig-ink);color:var(--ig-ink);font-weight:700}
+.rr-chars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.rr-char b{display:block;font:600 16px/1.4 var(--ig-font-sans)}
+.rr-char span{font-size:13px;color:var(--ig-label-readable)}
+.rr-char.planned{border-style:dashed;background:transparent}
+.rr-miles label{display:flex;gap:10px;align-items:center;font-size:14px;padding:6px 0;cursor:pointer;color:var(--ig-ink)}
+.rr-miles input{accent-color:#161415;width:16px;height:16px}
+.rr-miles label.done span{color:var(--ig-ink-soft);text-decoration:line-through}
+/* 下載、咒語 */
+.rr-dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.rr-dl a{display:block;text-decoration:none;color:inherit;transition:transform var(--ig-base) var(--ig-ease),border-color var(--ig-base) var(--ig-ease)}
+.rr-dl a:hover{transform:translateY(-1px);border-color:var(--ig-ink-faint)}
+.rr-dl b{display:block;font:600 16px/1.45 var(--ig-font-sans)}
+.rr-dl span{font-size:13px;color:var(--ig-ink-muted)}
+.rr-how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:8px}
+.rr-how b{display:block;font:600 16px/1.45 var(--ig-font-sans);margin:6px 0 2px}
+.rr-how i{font:500 12px/1 var(--ig-font-mono);font-style:normal;color:var(--ig-label-readable)}
+.rr-how p{margin:0;font-size:14px;line-height:1.65;color:var(--ig-ink-muted)}
+.rr-spell{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:start;margin-bottom:12px}
+.rr-spell b{font:600 16px/1.45 var(--ig-font-sans)}
+.rr-spell p{grid-column:1;margin:0;font-size:14px;line-height:1.65;color:var(--ig-ink-muted)}
+.rr-spell .ig-btn{grid-row:1/3;grid-column:2;align-self:center}
+.rr-foot{margin-top:28px;font-size:13px;line-height:1.8;color:var(--ig-label-readable)}
+.rr-foot a{color:var(--ig-ink);text-decoration:underline;text-underline-offset:3px}
+.rr-io{display:flex;gap:8px;margin-top:10px}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);background:var(--ig-night);color:#fff;
+  border-radius:999px;padding:10px 18px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:60}
+#toast.on{opacity:1;transform:translateX(-50%)}
+@media (max-width:1023px){
+  .rr-main{grid-template-columns:minmax(0,1fr)}
+  .rr-stage{position:relative;top:0;height:62vh;min-height:360px;border-radius:22px}
+  .rr-stats{margin-left:0}
+}
+@media (max-width:640px){
+  .rr-wrap{padding:0 16px 40px}
+  .rr-head{margin:20px 0 14px;gap:14px}
+  .rr-head h1{font-size:24px}
+  .rr-stat{min-width:0;flex:1;padding:8px 12px}
+  .rr-row{grid-template-columns:64px minmax(0,1fr);gap:12px;padding:12px}
+  .rr-row img{width:64px;height:64px}
+  .rr-row > :last-child:not(div){grid-column:1/-1;justify-self:start}
+  .rr-row h3{font-size:16px}
+  .rr-dl,.rr-how,.rr-chars{grid-template-columns:minmax(0,1fr)}
+  .rr-steps{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .rr-step{font-size:11px}
+  .rr-spell{grid-template-columns:minmax(0,1fr)}
+  .rr-spell .ig-btn{grid-row:auto;grid-column:1;justify-self:start;margin-top:6px}
+  #nowplaying small{display:none}
+  .rr-cbtn{padding:0 11px}
+}
+@media (prefers-reduced-motion:reduce){.rr-row,.rr-dl a{transition:none}.rr-row:hover,.rr-dl a:hover{transform:none}}
 </style>
 </head>
-<body>
-<div class="top">
-  <h1>🐶 HEKA 寵物 — Beagle 動畫審片室</h1>
-  <div class="sub">點選右側動畫 → 左側 3D 即時播放｜可下載模型、看 AI 影片對照、標 QA 狀態</div>
-  <div class="spacer"></div>
-  <button class="iobtn" id="exportBtn">匯出狀態 JSON</button>
-  <button class="iobtn" id="importBtn">匯入</button>
-  <input type="file" id="importFile" accept=".json" hidden>
-</div>
-<div class="layout">
-  <div class="viewer">
-    <div id="stage">
-      <div id="nowplaying">尚未選擇<small>點右側任一動畫開始</small></div>
-      <div id="cmpwrap"><video id="cmpvideo" loop muted playsinline controls></video></div>
-    </div>
-    <div class="ctrl">
-      <button id="playBtn">⏸ 暫停</button>
-      <button id="restartBtn">⟲ 重播</button>
-      <button id="loopBtn">🔁 循環：開</button>
-      <button id="cmpBtn">🎞 對照 AI 影片</button>
-      <select id="speedSel">
-        <option value="0.25">0.25×</option>
-        <option value="0.5">0.5×</option>
-        <option value="1" selected>1×</option>
-        <option value="1.5">1.5×</option>
-      </select>
-      <input type="range" id="seek" min="0" max="1000" value="0">
-      <span id="timelabel">0.00 / 0.00s</span>
-    </div>
+<body class="ig">
+<nav class="ig-nav" aria-label="主選單">
+  <a class="ig-nav__brand" href="https://www.pumpkinvr.com/zh" aria-label="南瓜虛擬科技">
+    <img class="ig-brand-logo" src="brand/pumpkin-logo-black.svg" alt="南瓜虛擬科技" height="28">
+  </a>
+  <div class="ig-nav__links">
+    <a class="ig-nav__link" href="#tab=clips" data-go="clips">動畫</a>
+    <a class="ig-nav__link" href="#tab=line" data-go="line">生產線</a>
+    <a class="ig-nav__link" href="#tab=files" data-go="files">下載</a>
+    <a class="ig-nav__link" href="#tab=how" data-go="how">怎麼用</a>
   </div>
-  <div class="side">
-    <div class="chars" id="chars"></div>
-    <div class="cards" id="cards"></div>
-    <div id="sharedinfo"></div>
-    <div class="filters" id="filters"></div>
-    <div id="cliplist"></div>
-    <h2>里程碑</h2>
-    <div class="mile" id="miles"></div>
-    <h2>下載</h2>
-    <div class="dl" id="downloads"></div>
-    <h2>跟 Claude 說什麼（點「複製」貼給 Claude Code）</h2>
-    <div id="spells"></div>
-    <footer>
-      GLB 內含 28 段動畫（26 支手 K＋1 支 AI 影片對位＋Idle 基準）。<br>
-      共用狀態來自 status.json（請 Claude 更新並推上來，大家都看得到）；你在這頁改的狀態只存在這台瀏覽器，要分享請用「匯出」。<br>
-      AI 影片對位的做法：<a href="https://github.com/terry12260201/ai-video-to-bones" style="color:var(--acc)">ai-video-to-bones</a>
-    </footer>
+  <div class="ig-nav__right">
+    <button class="ig-theme-toggle" type="button" data-ig-theme-toggle aria-label="切換深色模式" aria-pressed="false"></button>
+    <button class="ig-btn ig-btn--gold ig-btn--sm" type="button" id="askBtn">要一支新動畫</button>
+  </div>
+</nav>
+
+<div class="rr-wrap">
+  <header class="rr-head">
+    <div>
+      <span class="rr-kicker">HEKA 寵物 · V02</span>
+      <h1>Beagle 動畫審片室</h1>
+      <p>點一支動畫，左邊直接播 3D。可以對照 AI 影片、標 QA 狀態、下載模型。</p>
+    </div>
+    <div class="rr-stats" id="stats" aria-live="polite"></div>
+  </header>
+
+  <div class="rr-main">
+    <section class="rr-stage" aria-label="3D 預覽">
+      <div id="stage">
+        <div id="nowplaying"><b>載入模型中…</b></div>
+        <div id="cmpwrap"><video id="cmpvideo" loop muted playsinline controls></video></div>
+      </div>
+      <div class="rr-ctrl">
+        <button class="rr-cbtn" id="playBtn" type="button">暫停</button>
+        <button class="rr-cbtn" id="restartBtn" type="button">重播</button>
+        <button class="rr-cbtn" id="loopBtn" type="button" aria-pressed="true">循環：開</button>
+        <button class="rr-cbtn" id="cmpBtn" type="button">對照 AI 影片</button>
+        <label class="ig-sr" for="speedSel" style="position:absolute;left:-9999px">播放速度</label>
+        <select id="speedSel" aria-label="播放速度">
+          <option value="0.25">0.25×</option><option value="0.5">0.5×</option>
+          <option value="1" selected>1×</option><option value="1.5">1.5×</option>
+        </select>
+        <input type="range" id="seek" min="0" max="1000" value="0" aria-label="時間軸">
+        <span id="timelabel">0.00 / 0.00s</span>
+      </div>
+    </section>
+
+    <section aria-label="工作區">
+      <div class="rr-tabs" role="tablist" id="tabs"></div>
+
+      <div class="rr-panel" id="p-clips" role="tabpanel">
+        <div class="rr-tools">
+          <label class="ig-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="search" id="q" placeholder="搜尋動畫名稱" aria-label="搜尋動畫名稱"></label>
+        </div>
+        <div class="rr-tools" id="filters"></div>
+        <div class="rr-list" id="cliplist"></div>
+      </div>
+
+      <div class="rr-panel" id="p-line" role="tabpanel" hidden>
+        <h2 class="rr-h2">製作中的動畫</h2>
+        <p class="rr-sub" id="sharedinfo"></p>
+        <div class="rr-q" id="queue"></div>
+        <h2 class="rr-h2">角色</h2>
+        <div class="rr-chars" id="chars"></div>
+        <h2 class="rr-h2">里程碑</h2>
+        <div class="rr-card rr-miles" id="miles"></div>
+      </div>
+
+      <div class="rr-panel" id="p-files" role="tabpanel" hidden>
+        <h2 class="rr-h2">模型檔</h2>
+        <p class="rr-sub">三個 3D 檔是同一隻狗、同一組骨架，差別只在給誰用。</p>
+        <div class="rr-dl" id="downloads"></div>
+        <h2 class="rr-h2">我的 QA 狀態</h2>
+        <p class="rr-sub">你在這頁改的狀態只存在這台瀏覽器。要給別人看，匯出後交給 Claude 更新共用狀態。</p>
+        <div class="rr-io">
+          <button class="ig-btn ig-btn--ghost ig-btn--sm" id="exportBtn" type="button">匯出狀態 JSON</button>
+          <button class="ig-btn ig-btn--ghost ig-btn--sm" id="importBtn" type="button">匯入</button>
+          <input type="file" id="importFile" accept=".json" hidden>
+        </div>
+      </div>
+
+      <div class="rr-panel" id="p-how" role="tabpanel" hidden>
+        <h2 class="rr-h2">你只要做三件事</h2>
+        <div class="rr-how">
+          <div class="rr-card"><i>01</i><b>講需求</b><p>跟 Claude 說哪個角色、什麼動作。它會給你側面參考圖和寫好的影片 Prompt。</p></div>
+          <div class="rr-card"><i>02</i><b>按一次生成</b><p>到南瓜中控的 AI 影片工坊：上傳圖、貼 Prompt、畫質選「成品」。</p></div>
+          <div class="rr-card"><i>03</i><b>回來這裡看</b><p>Claude 把骨架對上影片後會更新這一頁。不對就說第幾格、哪隻腳。</p></div>
+        </div>
+        <h2 class="rr-h2">直接複製，貼給 Claude Code</h2>
+        <div id="spells"></div>
+      </div>
+
+      <footer class="rr-foot">
+        模型含 28 段動畫：26 段手調、1 段照 AI 影片對骨架、1 段素材包原有待機。<br>
+        AI 影片對骨架的做法與程式：<a href="https://github.com/terry12260201/ai-video-to-bones">ai-video-to-bones</a>｜
+        這個審片室的原始碼：<a href="https://github.com/terry12260201/heka-pet-review">heka-pet-review</a>
+      </footer>
+    </section>
   </div>
 </div>
+<div id="toast" role="status" aria-live="polite"></div>
+
 <script src="data.js"></script>
 <script type="importmap">
 {"imports":{"three":"./vendor/three.module.js","three/addons/loaders/GLTFLoader.js":"./vendor/GLTFLoader.js","three/addons/controls/OrbitControls.js":"./vendor/OrbitControls.js","three/addons/utils/BufferGeometryUtils.js":"./vendor/BufferGeometryUtils.js"}}
 </script>
 <script type="module" src="app.js"></script>
+<script src="vendor/ink-gold-ui.js"></script>
 </body>
 </html>
