@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06 13:30",
+  "updated": "2026-10-06 14:10",
   "updated_by": "Claude",
   "statuses": {
     "Walk_AIVideo_Loop": {
@@ -195,41 +195,6 @@
       "note": "可預覽；頭尾接回站姿"
     },
     {
-      "en": "PlayBow_AIVideo",
-      "zh": "邀玩鞠躬",
-      "stage": "video",
-      "info": "720p · 5 秒",
-      "note": "10/6 09:31 送中控，生成中。⚠ 這批走「文生影片＋參考圖」，風格會跑掉，可能要用「微調再生成」重出"
-    },
-    {
-      "en": "PawBall_AIVideo",
-      "zh": "拍球",
-      "stage": "video",
-      "info": "720p · 5 秒",
-      "note": "10/6 09:33 送中控，生成中；之後要補正面影片看是哪隻腳。⚠ 這批走「文生影片＋參考圖」，風格會跑掉，可能要用「微調再生成」重出"
-    },
-    {
-      "en": "BodyShake_AIVideo",
-      "zh": "全身抖毛",
-      "stage": "video",
-      "info": "720p · 5 秒",
-      "note": "10/6 09:34 送中控，生成中；之後要補正面影片。⚠ 這批走「文生影片＋參考圖」，風格會跑掉，可能要用「微調再生成」重出"
-    },
-    {
-      "en": "HungryBeg_AIVideo",
-      "zh": "討食",
-      "stage": "video",
-      "info": "720p · 5 秒",
-      "note": "10/6 09:35 送中控，生成中。⚠ 這批走「文生影片＋參考圖」，風格會跑掉，可能要用「微調再生成」重出"
-    },
-    {
-      "en": "SniffAir_AIVideo",
-      "zh": "聞空氣",
-      "stage": "video",
-      "info": "720p · 5 秒",
-      "note": "10/6 09:36 送中控，生成中。⚠ 這批走「文生影片＋參考圖」，風格會跑掉，可能要用「微調再生成」重出"
-    },
-    {
       "en": "Sit_AIVideo",
       "zh": "坐下",
       "stage": "video",
@@ -263,6 +228,41 @@
       "stage": "video",
       "info": "720p · 5 秒",
       "note": "10/6 12:50 送中控，只當腳序參考不對骨架"
+    },
+    {
+      "en": "HungryBeg_AIVideo",
+      "zh": "討食",
+      "stage": "video",
+      "info": "720p · 5 秒",
+      "note": "10/6 下午用「微調再生成」（第一格模式）重送，Prompt 有標題與頭尾站姿；上午那版風格跑掉作廢"
+    },
+    {
+      "en": "PlayBow_AIVideo",
+      "zh": "邀玩鞠躬",
+      "stage": "video",
+      "info": "720p · 5 秒",
+      "note": "10/6 下午用「微調再生成」（第一格模式）重送，Prompt 有標題與頭尾站姿；上午那版風格跑掉作廢"
+    },
+    {
+      "en": "PawBall_AIVideo",
+      "zh": "拍球",
+      "stage": "video",
+      "info": "720p · 5 秒",
+      "note": "10/6 下午用「微調再生成」（第一格模式）重送，Prompt 有標題與頭尾站姿；上午那版風格跑掉作廢"
+    },
+    {
+      "en": "SniffAir_AIVideo",
+      "zh": "聞空氣",
+      "stage": "video",
+      "info": "720p · 5 秒",
+      "note": "10/6 下午用「微調再生成」（第一格模式）重送，Prompt 有標題與頭尾站姿；上午那版風格跑掉作廢"
+    },
+    {
+      "en": "BodyShake_AIVideo",
+      "zh": "全身抖毛",
+      "stage": "video",
+      "info": "720p · 5 秒",
+      "note": "10/6 下午用「微調再生成」（第一格模式）重送，Prompt 有標題與頭尾站姿；上午那版風格跑掉作廢"
     }
   ],
   "miles": {
