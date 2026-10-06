@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06 14:10",
+  "updated": "2026-10-06 15:00",
   "updated_by": "Claude",
   "statuses": {
     "Walk_AIVideo_Loop": {
@@ -84,7 +84,7 @@
     },
     "Body_Shake": {
       "status": "rework",
-      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "note": "手調版，已有 AI 影片版 BodyShake_AIVideo 可比較。",
       "date": "2026-10-06"
     },
     "Stretch_F": {
@@ -155,6 +155,11 @@
     "Drink_AIVideo": {
       "status": "done",
       "note": "喝水重做版：改從第 8 格起算、沿用攝影機、頭尾釘站姿。重疊率 0.84（原 0.78）。臉、耳、舌從 Idle_1 疊上。",
+      "date": "2026-10-06"
+    },
+    "BodyShake_AIVideo": {
+      "status": "done",
+      "note": "第一格模式重生的影片，風格有保住。剪影重疊率 0.87。側面看不到的頭側滾／耳朵外飛，是讀影片節奏（第 16–62 格、每 6 格一甩）用程式補的；轉頭幅度壓了一半。請看對照影片。",
       "date": "2026-10-06"
     }
   },
@@ -260,9 +265,9 @@
     {
       "en": "BodyShake_AIVideo",
       "zh": "全身抖毛",
-      "stage": "video",
-      "info": "720p · 5 秒",
-      "note": "10/6 下午用「微調再生成」（第一格模式）重送，Prompt 有標題與頭尾站姿；上午那版風格跑掉作廢"
+      "stage": "qa",
+      "info": "5 秒影片 → 113 格",
+      "note": "可預覽，等人眼驗收"
     }
   ],
   "miles": {

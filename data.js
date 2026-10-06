@@ -31,6 +31,7 @@ const CLIPS = [
   {id:29, en:"Run_AIVideo_Loop",  zh:"奔跑循環（AI 影片對位）", desc:"照 AI 生成的側面奔跑影片逐格對骨架，13 格一圈（可循環）；奔跑腿交疊多，腳掌位置最難讀", tier:"P0", frames:"1-14", method:"video", compare:"media/Run_AIVideo_Loop.mp4"},
   {id:30, en:"Eat_AIVideo",       zh:"吃東西（AI 影片對位）", desc:"站著低頭吃地上的東西再抬頭，10 秒一次性動作；頭頸耳嘴為主，腳不動", tier:"P0", frames:"1-239", method:"video", compare:"media/Eat_AIVideo.mp4"},
   {id:31, en:"Drink_AIVideo",     zh:"喝水（AI 影片對位）", desc:"站著低頭喝水再抬頭，10 秒一次性動作；頭頸耳嘴為主，腳不動", tier:"P0", frames:"1-239", method:"video", compare:"media/Drink_AIVideo.mp4"},
+  {id:32, en:"BodyShake_AIVideo", zh:"全身抖毛（AI 影片對位）", desc:"站著從頭到尾波浪式甩動 113 格；身體與四肢照側面影片對位，頭左右側滾、耳朵外飛、尾巴甩動是照影片節奏補的甩動層；頭尾接回站姿", tier:"P1", frames:"1-113", method:"video", compare:"media/BodyShake_AIVideo.mp4"},
   {id:26, en:"Sick_Lie",          zh:"不舒服", desc:"蜷縮趴臥、耳貼平、尾內收、淺呼吸帶發抖（可循環）", tier:"P0", frames:"1-90"}
 ];
 const STATUS_OPTS = [
@@ -53,7 +54,7 @@ const DEFAULT_MILES = [true, true, false, false, false, false];
 
 // 角色清單：live = 已有模型與動畫；planned = 規劃中
 const CHARACTERS = [
-  {key:"beagle", name:"Beagle 小獵犬", status:"live",    note:"32 段動畫，可預覽"},
+  {key:"beagle", name:"Beagle 小獵犬", status:"live",    note:"33 段動畫，可預覽"},
   {key:"cat",    name:"貓",            status:"planned", note:"規劃中，還沒有模型"},
   {key:"dragon", name:"龍",            status:"planned", note:"規劃中，還沒有模型"}
 ];
