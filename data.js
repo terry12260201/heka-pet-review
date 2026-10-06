@@ -31,7 +31,7 @@ const CLIPS = [
   {id:29, en:"Run_AIVideo_Loop",  zh:"奔跑循環（AI 影片對位）", desc:"照 AI 生成的側面奔跑影片逐格對骨架，13 格一圈（可循環）；奔跑腿交疊多，腳掌位置最難讀", tier:"P0", frames:"1-14", method:"video", compare:"media/Run_AIVideo_Loop.mp4"},
   {id:30, en:"Eat_AIVideo",       zh:"吃東西（AI 影片對位）", desc:"站著低頭吃地上的東西再抬頭，10 秒一次性動作；頭頸耳嘴為主，腳不動", tier:"P0", frames:"1-239", method:"video", compare:"media/Eat_AIVideo.mp4"},
   {id:31, en:"Drink_AIVideo",     zh:"喝水（AI 影片對位）", desc:"站著低頭喝水再抬頭，10 秒一次性動作；頭頸耳嘴為主，腳不動", tier:"P0", frames:"1-239", method:"video", compare:"media/Drink_AIVideo.mp4"},
-  {id:32, en:"BodyShake_AIVideo", zh:"全身抖毛（AI 影片對位）", desc:"站著從頭到尾波浪式甩動 113 格；身體與四肢照側面影片對位，頭左右側滾、耳朵外飛、尾巴甩動是照影片節奏補的甩動層；頭尾接回站姿", tier:"P1", frames:"1-113", method:"video", compare:"media/BodyShake_AIVideo.mp4"},
+  {id:32, en:"BodyShake_AIVideo", zh:"全身抖毛（AI 影片對位）", desc:"站著從頭到尾波浪式甩動 113 格；目前只有側面對位的版本（身體、四肢、轉頭）；側滾與耳朵要等正面影片；頭尾接回站姿", tier:"P1", frames:"1-113", method:"video", compare:"media/BodyShake_AIVideo.mp4"},
   {id:26, en:"Sick_Lie",          zh:"不舒服", desc:"蜷縮趴臥、耳貼平、尾內收、淺呼吸帶發抖（可循環）", tier:"P0", frames:"1-90"}
 ];
 const STATUS_OPTS = [
