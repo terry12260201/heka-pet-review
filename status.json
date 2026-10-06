@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06 15:40",
+  "updated": "2026-10-06 15:55",
   "updated_by": "Claude",
   "statuses": {
     "Walk_AIVideo_Loop": {
@@ -268,6 +268,13 @@
       "stage": "fit",
       "info": "5 秒影片 → 113 格",
       "note": "側面對位完成但甩動不自然；待補正面影片讀側滾與耳朵"
+    },
+    {
+      "en": "BodyShake_front_AIVideo",
+      "zh": "全身抖毛（正面參考）",
+      "stage": "video",
+      "info": "720p · 5 秒",
+      "note": "10/6 15:50 送中控，用來讀頭側滾與耳朵，和側面那支合成"
     }
   ],
   "miles": {
