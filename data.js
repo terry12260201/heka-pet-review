@@ -32,6 +32,7 @@ const CLIPS = [
   {id:30, en:"Eat_AIVideo",       zh:"吃東西（AI 影片對位）", desc:"站著低頭吃地上的東西再抬頭，10 秒一次性動作；頭頸耳嘴為主，腳不動", tier:"P0", frames:"1-239", method:"video", compare:"media/Eat_AIVideo.mp4"},
   {id:31, en:"Drink_AIVideo",     zh:"喝水（AI 影片對位）", desc:"站著低頭喝水再抬頭，10 秒一次性動作；頭頸耳嘴為主，腳不動", tier:"P0", frames:"1-239", method:"video", compare:"media/Drink_AIVideo.mp4"},
   {id:32, en:"BodyShake_AIVideo", zh:"全身抖毛（AI 影片對位）", desc:"站著從頭到尾波浪式甩動 113 格；目前只有側面對位的版本（身體、四肢、轉頭）；側滾與耳朵要等正面影片；頭尾接回站姿", tier:"P1", frames:"1-113", method:"video", compare:"media/BodyShake_AIVideo.mp4"},
+  {id:33, en:"BodyShake_Loop",    zh:"全身抖毛（GPT·Blender 雙視角版）", desc:"站著從頭甩到尾 5 秒循環：正面影片鼻尖＋眼線控制甩頭節奏、側面影片檢查支撐；身體蹲低、前腳拓寬站距、耳朵延遲甩、舌頭收放；每 1/4 幀量真實腳底，首尾同姿可無縫循環", tier:"P1", frames:"1-120", method:"video", compare:"media/BodyShake_Loop.mp4"},
   {id:26, en:"Sick_Lie",          zh:"不舒服", desc:"蜷縮趴臥、耳貼平、尾內收、淺呼吸帶發抖（可循環）", tier:"P0", frames:"1-90"}
 ];
 const STATUS_OPTS = [

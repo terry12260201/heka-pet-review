@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06 15:55",
+  "updated": "2026-10-07 14:30",
   "updated_by": "Claude",
   "statuses": {
     "Walk_AIVideo_Loop": {
@@ -159,8 +159,13 @@
     },
     "BodyShake_AIVideo": {
       "status": "rework",
-      "note": "南瓜 10/6 驗收：亂甩，不行。已先退回「只有對位」的版本（頭側滾、耳朵外飛那層拿掉）。側面影片讀不到側滾，要補正面影片再做。",
+      "note": "南瓜 10/6 驗收：亂甩，不行。已先退回「只有對位」的版本（頭側滾、耳朵外飛那層拿掉）。側面影片讀不到側滾，要補正面影片再做。 10/7：已由 GPT 版 BodyShake_Loop 取代，這支留著對照。",
       "date": "2026-10-06"
+    },
+    "BodyShake_Loop": {
+      "status": "done",
+      "note": "GPT（Codex）10/6 用正面＋側面兩支 AI 影片在 Blender 做的版本，南瓜 10/7 認定目前效果最好。數據：腳底對預定高度最大誤差 0.09 毫米、耳／舌／腿穿插 481 點未檢出、首尾網格差 0、GLB 讀回差 0.0008 毫米。已知差異：耳尖彎曲與閉眼外觀跟影片不同。GLB 原封不動併入（96 Hz）。做法見 ai-video-to-bones/docs/SHAKE.md。",
+      "date": "2026-10-07"
     }
   },
   "queue": [
@@ -263,18 +268,11 @@
       "note": "10/6 下午用「微調再生成」（第一格模式）重送，Prompt 有標題與頭尾站姿；上午那版風格跑掉作廢"
     },
     {
-      "en": "BodyShake_AIVideo",
-      "zh": "全身抖毛",
-      "stage": "fit",
-      "info": "5 秒影片 → 113 格",
-      "note": "側面對位完成但甩動不自然；待補正面影片讀側滾與耳朵"
-    },
-    {
-      "en": "BodyShake_front_AIVideo",
-      "zh": "全身抖毛（正面參考）",
-      "stage": "video",
-      "info": "720p · 5 秒",
-      "note": "10/6 15:50 送中控，用來讀頭側滾與耳朵，和側面那支合成"
+      "en": "BodyShake_Loop",
+      "zh": "全身抖毛（GPT·Blender 雙視角版）",
+      "stage": "qa",
+      "info": "正面＋側面 5 秒影片 → 120 格循環",
+      "note": "可預覽，等人眼驗收；做法見 ai-video-to-bones/docs/SHAKE.md"
     }
   ],
   "miles": {
