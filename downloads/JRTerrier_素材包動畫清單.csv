@@ -1,0 +1,116 @@
+﻿動畫名,中文,分類,照護情境,格數,對應需求
+A_Pose,A 字基準姿勢,待機,照護情境不建議,1-2,
+Attack_Bite,撲咬,攻擊受擊,照護情境不建議,1-31,
+Attack_Bite_IP,撲咬（原地）,攻擊受擊,照護情境不建議,1-36,
+Attack_F,攻擊－前,攻擊受擊,照護情境不建議,1-28,
+Attack_J,跳撲攻擊,攻擊受擊,照護情境不建議,1-38,
+Attack_L,攻擊－左,攻擊受擊,照護情境不建議,1-31,
+Attack_R,攻擊－右,攻擊受擊,照護情境不建議,1-31,
+Bark,吠叫,互動,看情境,1-111,mood_social、ar_wave
+Crouch_BL_IP,伏低前進－左後,蹲伏潛行,看情境,1-33,
+Crouch_BR_IP,伏低前進－右後,蹲伏潛行,看情境,1-33,
+Crouch_B_IP,伏低前進－後退,蹲伏潛行,看情境,1-33,
+Crouch_F_IP,伏低前進－向前,蹲伏潛行,看情境,1-33,
+Crouch_Idle_end,伏低警戒－結束,蹲伏潛行,看情境,1-21,
+Crouch_Idle_loop_1,伏低警戒－循環 1,蹲伏潛行,看情境,1-41,
+Crouch_Idle_loop_2,伏低警戒－循環 2,蹲伏潛行,看情境,1-131,
+Crouch_Idle_start,伏低警戒－開始,蹲伏潛行,看情境,1-22,
+Crouch_L_IP,伏低前進－左轉弧,蹲伏潛行,看情境,1-33,
+Crouch_R_IP,伏低前進－右轉弧,蹲伏潛行,看情境,1-33,
+Crouch_turn_L_IP,伏低左轉,蹲伏潛行,看情境,1-17,
+Crouch_turn_R_IP,伏低右轉,蹲伏潛行,看情境,1-17,
+Death_L,倒下－左,攻擊受擊,照護情境不建議,1-31,
+Death_R,倒下－右,攻擊受擊,照護情境不建議,1-31,
+Defecate,大便,生活小事,照護情境不建議,1-141,
+Digging_end,挖洞－結束,生活小事,看情境,1-21,life_explore
+Digging_loop,挖洞－循環,生活小事,看情境,1-41,life_explore
+Digging_start,挖洞－開始,生活小事,看情境,1-21,life_explore
+Drink_loop,喝水－循環,吃喝,可直接用,1-81,life_drink
+EatDrink_end,吃完抬頭,吃喝,可直接用,1-41,life_eat、life_drink
+EatDrink_start,低頭靠近碗,吃喝,可直接用,1-21,life_eat、life_drink
+Eat_loop,吃飯－循環,吃喝,可直接用,1-81,life_eat
+Eat_tear,撕咬食物,吃喝,看情境,1-101,life_eat
+Fall,掉落中,跳躍,看情境,1-9,
+Hit_B,被打－後,攻擊受擊,照護情境不建議,1-27,
+Hit_F,被打－前,攻擊受擊,照護情境不建議,1-26,
+Hit_M,被打－中,攻擊受擊,照護情境不建議,1-21,
+Idle_1,待機－喘氣張望,待機,可直接用,1-101,life_idle
+Idle_2,待機－看向前方,待機,可直接用,1-121,life_idle、mood_social、ar_wave、trip_photo
+Idle_3,待機－伏低張望,待機,可直接用,1-101,life_idle
+Idle_4,低頭嗅聞地面,待機,可直接用,1-101,life_explore
+Idle_5_end,前伏邀玩－結束,待機,可直接用,1-16,idea_stretch
+Idle_5_loop,前伏邀玩－循環,待機,可直接用,1-31,play_toy、mood_happy、idea_stretch
+Idle_5_start,前伏邀玩－開始,待機,可直接用,1-16,idea_stretch
+Idle_6,抬頭聞空氣,待機,可直接用,1-121,life_explore、ar_reach、idea_wait
+Idle_7,四處張望（長版）,待機,可直接用,1-201,life_idle
+JumpAir_Horiz,空中（水平）,跳躍,可直接用,1-31,
+JumpAir_Up,空中（往上）,跳躍,可直接用,1-31,life_jump
+JumpAir_Up_F,空中（往上前傾）,跳躍,可直接用,1-31,
+JumpAir_high,空中（高）,跳躍,可直接用,1-31,
+JumpAir_high_F,空中（高前傾）,跳躍,可直接用,1-31,
+JumpAir_low,空中（低）,跳躍,可直接用,1-31,
+JumpAir_low_F,空中（低前傾）,跳躍,可直接用,1-31,
+JumpLand,落地,跳躍,可直接用,1-21,life_jump
+JumpLand_F_IP,落地（往前）,跳躍,可直接用,1-20,
+JumpLand_Place,落地（原地）,跳躍,可直接用,1-16,
+JumpStart_Down_IP,往下跳,跳躍,可直接用,1-18,life_jump、user_bed
+JumpStart_F_IP,起跳（往前）,跳躍,可直接用,1-13,
+JumpStart_Place,起跳（原地）,跳躍,可直接用,1-11,
+JumpStart_Up,起跳（抬頭往上）,跳躍,可直接用,1-11,life_jump、user_bed
+JumpUp_End_IP,跳上去爬上收尾,跳躍,可直接用,1-26,user_bed
+Jump_F_IP,往前跳（完整）,跳躍,可直接用,1-44,life_jump、ar_arms
+Jump_Place_IP,原地跳（完整）,跳躍,可直接用,1-36,life_jump、mood_happy
+Jump_Run_IP,邊跑邊跳,跳躍,可直接用,1-38,ar_arms
+Lie_Sleep_end,蜷睡醒來,趴臥睡眠,可直接用,1-16,life_sleep、user_bed
+Lie_Sleep_loop,蜷睡－循環,趴臥睡眠,可直接用,1-21,life_sleep、user_bed
+Lie_Sleep_start,蜷睡入睡,趴臥睡眠,可直接用,1-11,life_sleep、user_bed
+Lie_belly_end,趴著起身,趴臥睡眠,可直接用,1-26,life_rest
+Lie_belly_loop_1,趴著－循環 1,趴臥睡眠,可直接用,1-81,life_rest、trip_photo、idea_sad
+Lie_belly_loop_2,趴著－循環 2,趴臥睡眠,可直接用,1-81,
+Lie_belly_sleep,趴睡－循環,趴臥睡眠,可直接用,1-31,life_sleep
+Lie_belly_sleep_end,趴睡醒來,趴臥睡眠,可直接用,1-21,life_sleep
+Lie_belly_sleep_start,趴著入睡,趴臥睡眠,可直接用,1-21,life_sleep
+Lie_belly_start,趴下（肚子貼地）,趴臥睡眠,可直接用,1-26,life_rest
+Lie_end,放鬆趴起身,趴臥睡眠,可直接用,1-36,life_rest
+Lie_loop_1,放鬆趴－循環 1,趴臥睡眠,可直接用,1-81,life_rest
+Lie_loop_2,放鬆趴－循環 2,趴臥睡眠,可直接用,1-81,
+Lie_start,趴下（放鬆側腿）,趴臥睡眠,可直接用,1-37,life_rest
+Pick_up,叼起東西,生活小事,可直接用,1-31,play_ball、play_toy、idea_bring
+Pick_up_idle,叼著東西待機,生活小事,可直接用,1-101,play_ball、play_toy、idea_bring
+Pissing,抬腳尿尿,生活小事,照護情境不建議,1-131,
+Put_down,放下東西,生活小事,可直接用,1-31,play_ball、idea_bring
+RunFast_F_IP,衝刺－向前,移動,可直接用,1-13,play_ball、user_run
+RunFast_L_IP,衝刺－左轉弧,移動,可直接用,1-13,
+RunFast_R_IP,衝刺－右轉弧,移動,可直接用,1-13,
+Run_F_IP,跑步－向前,移動,可直接用,1-13,play_ball、ar_squat、trip_go、user_run
+Run_L_IP,跑步－左轉弧,移動,可直接用,1-13,user_run
+Run_R_IP,跑步－右轉弧,移動,可直接用,1-13,user_run
+Scratching,後腳抓癢,生活小事,可直接用,1-146,idea_scratch
+Sitting_end,站起來,坐,可直接用,1-26,life_rest
+Sitting_loop_1,坐著－循環 1,坐,可直接用,1-41,life_rest、ar_squat、trip_photo
+Sitting_loop_2,坐著－循環 2,坐,可直接用,1-96,idea_wait
+Sitting_start,坐下,坐,可直接用,1-31,life_rest、ar_squat
+Swim_BL_IP,游泳－左後,游泳,看情境,1-31,
+Swim_BR_IP,游泳－右後,游泳,看情境,1-31,
+Swim_B_IP,游泳－後退,游泳,看情境,1-31,
+Swim_F_IP,游泳－向前,游泳,看情境,1-31,idea_swim
+Swim_L_IP,游泳－左轉弧,游泳,看情境,1-31,
+Swim_R_IP,游泳－右轉弧,游泳,看情境,1-31,
+Swim_Turn_L_IP,游泳－原地左轉,游泳,看情境,1-31,
+Swim_Turn_R_IP,游泳－原地右轉,游泳,看情境,1-31,
+Swim_enter_IP,下水,游泳,看情境,1-31,idea_swim
+Swim_idle,游泳待機,游泳,看情境,1-37,idea_swim
+Trot_F_IP,小跑－向前,移動,可直接用,1-17,user_run
+Trot_L_IP,小跑－左轉弧,移動,可直接用,1-17,
+Trot_R_IP,小跑－右轉弧,移動,可直接用,1-17,
+Turn_L180_IP,左轉 180°,轉身,可直接用,1-25,life_walk、touch_retreat
+Turn_L_IP,左轉 90°,轉身,可直接用,1-17,life_walk
+Turn_R180_IP,右轉 180°,轉身,可直接用,1-25,life_walk、trip_go
+Turn_R_IP,右轉 90°,轉身,可直接用,1-17,life_walk
+Walk_BL_IP,走路－左後,移動,可直接用,1-25,user_walk
+Walk_BR_IP,走路－右後,移動,可直接用,1-25,user_walk
+Walk_B_IP,走路－後退,移動,可直接用,1-25,life_walk、touch_retreat、user_walk
+Walk_F_IP,走路－向前,移動,可直接用,1-25,life_walk、ar_reach、trip_go、user_walk、idea_bring
+Walk_L_IP,走路－左轉弧,移動,可直接用,1-25,life_walk、user_walk
+Walk_R_IP,走路－右轉弧,移動,可直接用,1-25,life_walk、user_walk
+BodyShake_FromBeagle,全身抖毛（移植自 Beagle GPT 版）,待機,可直接用,0-120,user_shake

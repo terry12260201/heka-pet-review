@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JRTerrier 動畫審片室 V03｜HEKA 寵物</title>
+<title>Beagle 動畫審片室 V02｜HEKA 寵物</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23161415%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%276%27 fill=%27%23FDC302%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="vendor/ink-gold.css">
+<link rel="stylesheet" href="../vendor/ink-gold.css">
 <style>
 /* 審片室 V02 · 墨金「工作區」版型：名稱與狀態 → 操作 → 結果。只補這一頁需要的排版，顏色全走墨金 token。 */
 .rr-wrap{width:100%;max-width:1328px;margin:0 auto;padding:0 24px 56px}
@@ -114,27 +114,6 @@
 .rr-foot{margin-top:28px;font-size:13px;line-height:1.8;color:var(--ig-label-readable)}
 .rr-foot a{color:var(--ig-ink);text-decoration:underline;text-underline-offset:3px}
 .rr-io{display:flex;gap:8px;margin-top:10px}
-.rr-notice{display:flex;gap:10px;align-items:baseline;margin-bottom:12px;border-color:var(--ig-gold-deep)}
-.rr-notice b{white-space:nowrap;font:600 14px/1.5 var(--ig-font-sans);color:var(--ig-gold-deep)}
-.rr-notice span{font-size:13px;line-height:1.65;color:var(--ig-ink-muted)}
-.rr-group{font:600 15px/1.5 var(--ig-font-sans);color:var(--ig-ink);margin:16px 0 0}
-.rr-group:first-child{margin-top:0}
-.rr-group small{display:block;font:400 12px/1.6 var(--ig-font-sans);color:var(--ig-label-readable)}
-.rr-tagx.ok{background:#DDEFD9;color:#1F4D1A}
-.rr-tagx.part{background:#FFF1BF;color:#5A4300}
-.rr-tagx.gap{background:transparent;border:1px dashed var(--ig-ink-faint);color:var(--ig-ink-muted)}
-.rr-tagx.user{background:var(--ig-ink);color:var(--ig-paper)}
-.rr-tagx.idea{background:var(--ig-mark-blue);color:#161415}
-.rr-tagx.no{background:#F6D9D6;color:#6B1A12}
-.rr-row.is-gap{border-style:dashed}
-.rr-clips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.rr-clip{height:26px;padding:0 10px;border-radius:999px;border:1px solid var(--ig-ink-hairline);background:var(--ig-paper);color:var(--ig-ink);
-  font:400 12px/1 var(--ig-font-mono);cursor:pointer}
-.rr-clip:hover{border-color:var(--ig-ink-faint)}
-.rr-clip.is-on{background:var(--ig-ink);color:var(--ig-paper);border-color:var(--ig-ink)}
-.rr-clip:focus-visible{outline:2px solid var(--ig-focus-ink);outline-offset:2px}
-.rr-gapnote{margin-top:6px!important;font-size:13px!important;color:var(--ig-gold-deep)!important}
-.rr-char a{color:var(--ig-ink)}
 #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);background:var(--ig-night);color:#fff;
   border-radius:999px;padding:10px 18px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:60}
 #toast.on{opacity:1;transform:translateX(-50%)}
@@ -166,7 +145,7 @@
 <body class="ig">
 <nav class="ig-nav" aria-label="主選單">
   <a class="ig-nav__brand" href="https://www.pumpkinvr.com/zh" aria-label="南瓜虛擬科技">
-    <img class="ig-brand-logo" src="brand/pumpkin-logo-black.svg" alt="南瓜虛擬科技" height="28">
+    <img class="ig-brand-logo" src="../brand/pumpkin-logo-black.svg" alt="南瓜虛擬科技" height="28">
   </a>
   <div class="ig-nav__links">
     <a class="ig-nav__link" href="#tab=clips" data-go="clips">動畫</a>
@@ -183,9 +162,9 @@
 <div class="rr-wrap">
   <header class="rr-head">
     <div>
-      <span class="rr-kicker">HEKA 寵物 · V03 · Jack Russell Terrier</span>
-      <h1>JRTerrier 動畫需求審片室</h1>
-      <p>企劃要的每個動作，素材包有沒有、用哪幾支、還缺什麼。點一列，左邊直接播 3D。</p>
+      <span class="rr-kicker">HEKA 寵物 · V02（封存）· <a href="../" style="color:inherit">回最新版 V03 →</a></span>
+      <h1>Beagle 動畫審片室</h1>
+      <p>點一支動畫，左邊直接播 3D。可以對照 AI 影片、標 QA 狀態、下載模型。</p>
     </div>
     <div class="rr-stats" id="stats" aria-live="polite"></div>
   </header>
@@ -206,7 +185,6 @@
           <option value="0.25">0.25×</option><option value="0.5">0.5×</option>
           <option value="1" selected>1×</option><option value="1.5">1.5×</option>
         </select>
-        <select id="coatSel" aria-label="毛色"><option value="1">毛色 1</option><option value="2">毛色 2</option><option value="3">毛色 3</option><option value="4">毛色 4</option></select>
         <input type="range" id="seek" min="0" max="1000" value="0" aria-label="時間軸">
         <span id="timelabel">0.00 / 0.00s</span>
       </div>
@@ -216,18 +194,16 @@
       <div class="rr-tabs" role="tablist" id="tabs"></div>
 
       <div class="rr-panel" id="p-clips" role="tabpanel">
-        <div class="rr-card rr-notice" id="srcnote"><b>需求來源</b><span>Jira FOOT-27 的動作表還沒讀進來，這一版先依「HEKA 寵物企劃」整理，標「企劃（待 Jira 核對）」。拿到 Jira 內容後由 Claude 更新。</span></div>
-        <div class="rr-tools" id="modes"></div>
         <div class="rr-tools">
           <label class="ig-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-            <input type="search" id="q" placeholder="搜尋需求或動畫名稱" aria-label="搜尋需求或動畫名稱"></label>
+            <input type="search" id="q" placeholder="搜尋動畫名稱" aria-label="搜尋動畫名稱"></label>
         </div>
         <div class="rr-tools" id="filters"></div>
         <div class="rr-list" id="cliplist"></div>
       </div>
 
       <div class="rr-panel" id="p-line" role="tabpanel" hidden>
-        <h2 class="rr-h2">要補的動作</h2>
+        <h2 class="rr-h2">製作中的動畫</h2>
         <p class="rr-sub" id="sharedinfo"></p>
         <div class="rr-q" id="queue"></div>
         <h2 class="rr-h2">角色</h2>
@@ -237,8 +213,8 @@
       </div>
 
       <div class="rr-panel" id="p-files" role="tabpanel" hidden>
-        <h2 class="rr-h2">模型與盤點表</h2>
-        <p class="rr-sub">模型與動畫取自素材包 Cartoon_JRTerrier（原地版 _IP），已轉成網頁可播的格式。</p>
+        <h2 class="rr-h2">模型檔</h2>
+        <p class="rr-sub">三個 3D 檔是同一隻狗、同一組骨架，差別只在給誰用。</p>
         <div class="rr-dl" id="downloads"></div>
         <h2 class="rr-h2">我的 QA 狀態</h2>
         <p class="rr-sub">你在這頁改的狀態只存在這台瀏覽器。要給別人看，匯出後交給 Claude 更新共用狀態。</p>
@@ -252,17 +228,16 @@
       <div class="rr-panel" id="p-how" role="tabpanel" hidden>
         <h2 class="rr-h2">你只要做三件事</h2>
         <div class="rr-how">
-          <div class="rr-card"><i>01</i><b>看需求對照</b><p>每一列是一個要的動作。標籤寫素材包現成、部分可用或素材包沒有。點列表裡的動畫名可以切換播放。</p></div>
-          <div class="rr-card"><i>02</i><b>標狀態</b><p>右邊選「確認採用／要修改／要新做／不做」。只存在你的瀏覽器，要給大家看就跟 Claude 說。</p></div>
-          <div class="rr-card"><i>03</i><b>補缺口</b><p>「生產線」列出要補的動作。跟 Claude 說「用 ai-video-to-bones 幫 JRTerrier 做〈動作〉」。</p></div>
+          <div class="rr-card"><i>01</i><b>講需求</b><p>跟 Claude 說哪個角色、什麼動作。它會給你側面參考圖和寫好的影片 Prompt。</p></div>
+          <div class="rr-card"><i>02</i><b>按一次生成</b><p>到南瓜中控的 AI 影片工坊：上傳圖、貼 Prompt、畫質選「成品」。</p></div>
+          <div class="rr-card"><i>03</i><b>回來這裡看</b><p>Claude 把骨架對上影片後會更新這一頁。不對就說第幾格、哪隻腳。</p></div>
         </div>
         <h2 class="rr-h2">直接複製，貼給 Claude Code</h2>
         <div id="spells"></div>
       </div>
 
       <footer class="rr-foot">
-        模型含 115 段動畫：素材包 Cartoon_JRTerrier 114 段（原地版）＋從 Beagle 移植的全身抖毛 1 段。<br>
-        上一版 Beagle 審片室：<a href="v02-beagle/">V02（封存）</a>｜
+        模型含 28 段動畫：26 段手調、1 段照 AI 影片對骨架、1 段素材包原有待機。<br>
         AI 影片對骨架的做法與程式：<a href="https://github.com/terry12260201/ai-video-to-bones">ai-video-to-bones</a>｜
         這個審片室的原始碼：<a href="https://github.com/terry12260201/heka-pet-review">heka-pet-review</a>
       </footer>
@@ -273,9 +248,9 @@
 
 <script src="data.js"></script>
 <script type="importmap">
-{"imports":{"three":"./vendor/three.module.js","three/addons/loaders/GLTFLoader.js":"./vendor/GLTFLoader.js","three/addons/controls/OrbitControls.js":"./vendor/OrbitControls.js","three/addons/utils/BufferGeometryUtils.js":"./vendor/BufferGeometryUtils.js"}}
+{"imports":{"three":"../vendor/three.module.js","three/addons/loaders/GLTFLoader.js":"../vendor/GLTFLoader.js","three/addons/controls/OrbitControls.js":"../vendor/OrbitControls.js","three/addons/utils/BufferGeometryUtils.js":"../vendor/BufferGeometryUtils.js"}}
 </script>
 <script type="module" src="app.js"></script>
-<script src="./vendor/ink-gold-ui.js"></script>
+<script src="../vendor/ink-gold-ui.js"></script>
 </body>
 </html>

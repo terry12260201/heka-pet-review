@@ -1,0 +1,44 @@
+﻿分組,需求,來源,素材包覆蓋,可用動畫,說明,缺什麼
+基本生活,待機（自由活動）,企劃（待 Jira 核對）,素材包現成,Idle_1、Idle_2、Idle_3、Idle_7,站著喘氣、張望、看向玩家，四支輪播就不會機械重複。,
+基本生活,行走（偽 3D 忽近忽遠）,企劃（待 Jira 核對）,素材包現成,Walk_F_IP、Walk_L_IP、Walk_R_IP、Walk_B_IP、Turn_L_IP、Turn_R_IP、Turn_L180_IP、Turn_R180_IP,原地版走路六方向＋轉身；位移交給程式控制，素材包另有位移版（RM）。,
+基本生活,跳躍,企劃（待 Jira 核對）,素材包現成,Jump_Place_IP、Jump_F_IP、JumpStart_Up、JumpAir_Up、JumpLand、JumpStart_Down_IP,原地跳、往前跳，另有起跳／空中／落地拆段，可組合跳上跳下。,
+基本生活,進食（點碗餵食）,企劃（待 Jira 核對）,素材包現成,EatDrink_start、Eat_loop、EatDrink_end、Eat_tear,低頭靠近碗→吃→抬頭，三段可接；撕咬版適合啃零食。,
+基本生活,喝水,企劃（待 Jira 核對）,素材包現成,EatDrink_start、Drink_loop、EatDrink_end,和吃飯共用開始與結束段。,
+基本生活,睡眠,企劃（待 Jira 核對）,部分可用,Lie_Sleep_start、Lie_Sleep_loop、Lie_Sleep_end、Lie_belly_sleep_start、Lie_belly_sleep、Lie_belly_sleep_end,蜷睡、趴睡各有入睡／循環／醒來。,企劃寫睡眠中要「偶發翻身」，素材包沒有翻身。
+基本生活,休息（趴、坐）,企劃（待 Jira 核對）,素材包現成,Lie_belly_start、Lie_belly_loop_1、Lie_belly_end、Lie_start、Lie_loop_1、Lie_end、Sitting_start、Sitting_loop_1、Sitting_end,肚子貼地趴、放鬆側腿趴、坐下，都有開始／循環／結束。,
+基本生活,探索（嗅聞、挖）,企劃（待 Jira 核對）,素材包現成,Idle_4、Idle_6、Digging_start、Digging_loop、Digging_end,低頭嗅地、抬頭聞空氣、挖洞。,
+觸摸反應,摸頭,企劃（待 Jira 核對）,素材包沒有,,瞇眼、抬頭往手上蹭、尾巴慢搖。,素材包沒有被摸的反應。
+觸摸反應,摸耳朵→抖耳,企劃（待 Jira 核對）,素材包沒有,,被摸的那隻耳朵抖兩下、頭微歪。,素材包沒有。
+觸摸反應,摸背,企劃（待 Jira 核對）,素材包沒有,,背往下沉、舒服瞇眼、尾巴搖。,素材包沒有。
+觸摸反應,摸肚子→翻肚,企劃（待 Jira 核對）,素材包沒有,,側倒翻肚、四腳放鬆、討摸。,素材包沒有翻肚。
+觸摸反應,連摸太多→擋爪,企劃（待 Jira 核對）,素材包沒有,,抬一隻前腳輕擋手。,素材包沒有。
+觸摸反應,連摸太多→退開,企劃（待 Jira 核對）,部分可用,Walk_B_IP、Turn_L180_IP,往後退或轉身走開。,有後退與轉身；缺「不耐煩」的表情與耳朵。
+玩耍與道具,追球,企劃（待 Jira 核對）,部分可用,Run_F_IP、RunFast_F_IP、Pick_up、Pick_up_idle、Put_down,衝過去→叼起→叼著回來→放下，四段素材包都有。,缺「撲球、用爪撥球」與追到時的停頓。
+玩耍與道具,玩玩具,企劃（待 Jira 核對）,部分可用,Pick_up、Pick_up_idle、Idle_5_loop,叼起玩具、前伏邀玩。,缺咬著玩具甩頭、拔河。
+情緒表現,興奮慶祝（完成生活提醒）,企劃（待 Jira 核對）,部分可用,Jump_Place_IP、Idle_5_loop,原地跳、前伏邀玩可先頂著用。,缺原地轉圈、邊跳邊搖尾這類「好開心」的慶祝。
+情緒表現,社交撒嬌,企劃（待 Jira 核對）,部分可用,Idle_2、Bark,看向玩家、叫一聲。,缺搖尾蹭人、坐著討摸；照護情境吠叫要節制。
+AR 手勢反應,揮手→看過來,企劃（待 Jira 核對）,部分可用,Idle_2、Bark,轉頭看向鏡頭、叫一聲回應。,缺開心搖尾的回應。
+AR 手勢反應,伸手→靠近聞手,企劃（待 Jira 核對）,部分可用,Walk_F_IP、Idle_6,走近、抬頭聞。,缺湊近聞手、舔手。
+AR 手勢反應,蹲下→跑過來,企劃（待 Jira 核對）,素材包現成,Run_F_IP、Sitting_start、Sitting_loop_1,跑過來後坐好看你。,
+AR 手勢反應,張開雙臂→撲過來,企劃（待 Jira 核對）,部分可用,Jump_Run_IP、Jump_F_IP,邊跑邊跳、往前跳。,缺撲到懷裡的收尾（站起前腳搭上來）。
+AR 手勢反應,傾身→歪頭,企劃（待 Jira 核對）,素材包沒有,,左右歪頭、耳朵豎起，疑惑又好奇。,素材包沒有歪頭。
+旅行與明信片,出發與召回,企劃（待 Jira 核對）,素材包現成,Walk_F_IP、Run_F_IP、Turn_R180_IP,轉身離開、跑回來。,
+旅行與明信片,明信片定格,企劃（待 Jira 核對）,素材包現成,Sitting_loop_1、Idle_2、Lie_belly_loop_1,坐好、看鏡頭、趴著，挑一格當拍照姿勢。,
+南瓜指定補充,床上睡覺,南瓜指定補充,部分可用,JumpStart_Up、JumpUp_End_IP、Lie_Sleep_start、Lie_Sleep_loop、Lie_Sleep_end、JumpStart_Down_IP,跳上床→蜷睡→醒來→跳下床，可用素材包拆段接起來。,要對齊床的高度；缺上床後先轉一圈踩一踩再躺的動作。
+南瓜指定補充,跑步,南瓜指定補充,素材包現成,Run_F_IP、Run_L_IP、Run_R_IP、RunFast_F_IP、Trot_F_IP,小跑、跑、衝刺三種速度，左右轉彎都有。,
+南瓜指定補充,走路,南瓜指定補充,素材包現成,Walk_F_IP、Walk_L_IP、Walk_R_IP、Walk_B_IP、Walk_BL_IP、Walk_BR_IP,六方向走路。,
+南瓜指定補充,原地打滾,南瓜指定補充,素材包沒有,,側倒、翻滾一圈、站起來甩甩頭。,素材包沒有；要翻轉整隻身體，建議用 45° 斜角影片做。
+南瓜指定補充,全身抖毛,南瓜指定補充,部分可用,BodyShake_FromBeagle,從 Beagle 的 GPT 版抖毛移植過來（兩隻是同一套骨架）。,移植試做，還沒經過人眼驗收。
+Claude 建議補充,追尾巴轉圈,Claude 建議補充,素材包沒有,,開心時原地追尾巴轉一兩圈，長者看了會笑。,素材包沒有；也能當「興奮慶祝」用。
+Claude 建議補充,歪頭疑惑,Claude 建議補充,素材包沒有,,聽到聲音或長者說話時歪頭，最萌的單一表情。,和 AR「傾身」共用。
+Claude 建議補充,伸懶腰＋打哈欠,Claude 建議補充,部分可用,Idle_5_start、Idle_5_loop、Idle_5_end,起床、睡前的過場，讓作息看起來真實。,前伏那段可當伸懶腰前半；缺後腳伸展與哈欠。
+Claude 建議補充,開心搖尾（疊加層）,Claude 建議補充,素材包沒有,,只動尾巴，可疊在任何動作上，回應長者說話。,做成疊加層，不用整支動畫。
+Claude 建議補充,給爪握手,Claude 建議補充,素材包沒有,,坐著抬一隻前腳，配合 AR 伸手，互動回饋最直接。,素材包沒有。
+Claude 建議補充,舔手／舔鏡頭,Claude 建議補充,素材包沒有,,湊近舔一下，親密度高時解鎖。,素材包沒有。
+Claude 建議補充,叼東西給主人（提醒用）,Claude 建議補充,部分可用,Walk_F_IP、Pick_up、Pick_up_idle、Put_down,叼藥袋、水杯模型走過來放下，接生活提醒（吃藥、喝水）。,四段都有，要接上道具掛點。
+Claude 建議補充,後腳抓癢,Claude 建議補充,素材包現成,Scratching,素材包現成，放進待機輪播增加生活感。,
+Claude 建議補充,打噴嚏,Claude 建議補充,素材包沒有,,嗅聞後偶爾打個噴嚏，小驚喜。,素材包沒有。
+Claude 建議補充,睡夢中踢腿,Claude 建議補充,素材包沒有,,睡著時腳抽動像在跑，可做成疊加層。,素材包沒有。
+Claude 建議補充,低落趴著（久未互動）,Claude 建議補充,部分可用,Lie_belly_loop_1,長者太久沒來時趴著、耳朵垂下，引導回來互動。,缺耳朵下垂、眼神往上看的表情層。
+Claude 建議補充,等門、看窗外,Claude 建議補充,部分可用,Sitting_loop_2、Idle_6,長者外出時坐在門口等、聞空氣。,缺盯著門口、聽到聲音耳朵豎起。
+Claude 建議補充,水邊景點游泳,Claude 建議補充,素材包現成,Swim_F_IP、Swim_idle、Swim_enter_IP,旅行到海邊、湖邊的景點可以用，素材包現成。,

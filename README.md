@@ -1,6 +1,29 @@
-# 🐶 HEKA 寵物 — Beagle 3D 模型與動畫審片室
+# 🐶 HEKA 寵物 — 動畫需求審片室（V03：Jack Russell Terrier）
+
+**▶ 線上審片室：<https://terry12260201.github.io/heka-pet-review/>**
+
+> **V03（2026-10-07）**：主角換成素材包 **Cartoon_JRTerrier**。這一版不是在做動畫，是把「企劃要的動作」和「素材包已有的動畫」對起來，看還缺什麼。
+>
+> - **需求對照 43 項**：素材包現成 14、部分可用 15、素材包沒有 14。來源分三種標籤：企劃（25 項）、南瓜指定補充（5 項：床上睡覺、跑步、走路、原地打滾、全身抖毛）、Claude 建議補充（13 項）。
+> - **素材包全部 115 支**：114 支原地版動畫＋從 Beagle 移植的全身抖毛。每支有中文名、分類、照護情境適不適合（攻擊、受擊、尿尿等 13 支標「不建議」）。
+> - **生產線 29 項**：所有「部分可用」與「素材包沒有」的需求，從「提需求」開始排。
+> - **毛色 1–4 切換**、需求直達連結 `#req=<代號>`、兩份盤點 CSV（可貼進 Google Sheets 對 Jira）。
+> - ⚠️ **需求來源**：Jira FOOT-27 的動作表還沒讀進來，企劃類需求暫依 HEKA 寵物企劃整理，標「待 Jira 核對」。
+>
+> **改需求**：編輯 `tools/reqs.py` → `python3 tools/build_data.py .` → `node tools/build_status.js "<時間>"`。
+> **重做模型或縮圖**：`tools/build_glb_blender.py`、`tools/thumbs_blender.py`（Blender 背景模式）。
+> **同骨架移植動畫**：`tools/retarget_same_rig.py`（Beagle 與 JRTerrier 是同一套 57 根骨頭）。
+>
+> 上一版 Beagle 審片室（V02）整包移到 [`v02-beagle/`](v02-beagle/)：<https://terry12260201.github.io/heka-pet-review/v02-beagle/>。舊的 `#clip=` 連結會自動導過去。
+
+---
+
+# V02 紀錄：Beagle 3D 模型與動畫審片室
+
+> 以下是 V02 的說明，檔案都已移到 `v02-beagle/` 底下。
 
 ![HEKA Beagle 主視圖](docs/images/hero.png)
+
 
 這個 repo 是 **HEKA 寵物（AI 數位陪伴）** 的 Beagle 小獵犬 3D 動畫測試，用 **Claude + Blender** 做動畫，最後放上一個瀏覽器就能看的 3D 審片室。
 
@@ -36,10 +59,10 @@
 
 | 檔案 | 格式 | 給誰用 | 大小 |
 |---|---|---|---|
-| [`model/Beagle_HEKA.blend`](model/Beagle_HEKA.blend) | Blender 5.1 | 美術：直接打開編修，貼圖已打包在檔案內 | 2.9 MB |
-| [`model/Beagle_HEKA.fbx`](model/Beagle_HEKA.fbx) | FBX 7.4（內嵌貼圖） | Unity／UE 匯入，27 段動畫都是獨立 Take | 13.3 MB |
-| [`beagle.glb`](beagle.glb) | glTF 2.0 Binary | 網頁／Three.js，審片室就是讀這一顆 | 2.3 MB |
-| [`model/Cartoon_Beagle_Albedo.png`](model/Cartoon_Beagle_Albedo.png) | PNG 2048×2048 | 原始顏色貼圖，可單獨修改 | 0.9 MB |
+| [`model/Beagle_HEKA.blend`](v02-beagle/model/Beagle_HEKA.blend) | Blender 5.1 | 美術：直接打開編修，貼圖已打包在檔案內 | 2.9 MB |
+| [`model/Beagle_HEKA.fbx`](v02-beagle/model/Beagle_HEKA.fbx) | FBX 7.4（內嵌貼圖） | Unity／UE 匯入，27 段動畫都是獨立 Take | 13.3 MB |
+| [`beagle.glb`](v02-beagle/beagle.glb) | glTF 2.0 Binary | 網頁／Three.js，審片室就是讀這一顆 | 2.3 MB |
+| [`model/Cartoon_Beagle_Albedo.png`](v02-beagle/model/Cartoon_Beagle_Albedo.png) | PNG 2048×2048 | 原始顏色貼圖，可單獨修改 | 0.9 MB |
 
 > 三個 3D 檔的內容完全相同：同一組網格、骨架和 27 段動畫。`.blend` 和 `.fbx` 是用 Blender 5.1.2 從 `beagle.glb` 轉出來的，轉完重新打開檢查過，動畫數、骨骼數和貼圖都對得上。
 

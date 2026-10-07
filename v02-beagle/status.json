@@ -1,0 +1,281 @@
+{
+  "updated": "2026-10-07 14:30",
+  "updated_by": "Claude",
+  "statuses": {
+    "Walk_AIVideo_Loop": {
+      "status": "done",
+      "note": "照 AI 影片對骨架的第一支。剪影重疊率平均 0.90；遠側後腳有幾格腳尖朝下，等人眼驗收。 臉、耳、舌從 Idle_1 疊上（10/6）。",
+      "date": "2026-10-04"
+    },
+    "Pet_Head_React": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Pet_Ear_Flick": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Pet_Turn_Look": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Pet_Paw_Block": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Pet_Back_React": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Belly_Up_start": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Belly_Up_loop": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Belly_Up_end": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Sniff_Ground_loop": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Sniff_Air": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Head_Tilt_L": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Head_Tilt_R": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Play_Bow": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Paw_Ball": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Spin_Celebrate": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Body_Shake": {
+      "status": "rework",
+      "note": "手調版，已有 AI 影片版 BodyShake_AIVideo 可比較。",
+      "date": "2026-10-06"
+    },
+    "Stretch_F": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Head_Nod": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Lick_Hand": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Sleep_Roll": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Tail_Wag_Fast": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Ear_Sad_Back": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Spin_Chase": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Beg_Play": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Hungry_Beg": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Sick_Lie": {
+      "status": "rework",
+      "note": "手調版。南瓜 10/6 決定：全部改走「照 AI 影片」重做，做好再換狀態。",
+      "date": "2026-10-06"
+    },
+    "Trot_AIVideo_Loop": {
+      "status": "done",
+      "note": "小跑。剪影重疊率平均 0.90，等人眼驗收。 臉、耳、舌從 Idle_1 疊上（10/6）。",
+      "date": "2026-10-06"
+    },
+    "Run_AIVideo_Loop": {
+      "status": "done",
+      "note": "奔跑重做版：加強前後格連續。重疊率 0.86；13 格一圈本來就短，腳序仍請重點看。已另送 45° 斜角影片當參考。",
+      "date": "2026-10-06"
+    },
+    "Eat_AIVideo": {
+      "status": "done",
+      "note": "吃東西，一次性 10 秒，頭尾釘回站姿可接待機。重疊率 0.84；頭比影片高一點（脊椎不讓彎太多，避免扭曲）。臉、耳、舌從 Idle_1 疊上。",
+      "date": "2026-10-06"
+    },
+    "Drink_AIVideo": {
+      "status": "done",
+      "note": "喝水重做版：改從第 8 格起算、沿用攝影機、頭尾釘站姿。重疊率 0.84（原 0.78）。臉、耳、舌從 Idle_1 疊上。",
+      "date": "2026-10-06"
+    },
+    "BodyShake_AIVideo": {
+      "status": "rework",
+      "note": "南瓜 10/6 驗收：亂甩，不行。已先退回「只有對位」的版本（頭側滾、耳朵外飛那層拿掉）。側面影片讀不到側滾，要補正面影片再做。 10/7：已由 GPT 版 BodyShake_Loop 取代，這支留著對照。",
+      "date": "2026-10-06"
+    },
+    "BodyShake_Loop": {
+      "status": "done",
+      "note": "GPT（Codex）10/6 用正面＋側面兩支 AI 影片在 Blender 做的版本，南瓜 10/7 認定目前效果最好。數據：腳底對預定高度最大誤差 0.09 毫米、耳／舌／腿穿插 481 點未檢出、首尾網格差 0、GLB 讀回差 0.0008 毫米。已知差異：耳尖彎曲與閉眼外觀跟影片不同。GLB 原封不動併入（96 Hz）。做法見 ai-video-to-bones/docs/SHAKE.md。",
+      "date": "2026-10-07"
+    }
+  },
+  "queue": [
+    {
+      "en": "Walk_AIVideo_Loop",
+      "zh": "走路循環",
+      "stage": "qa",
+      "info": "5 秒影片 → 20 格一圈",
+      "note": "可預覽，等人眼驗收"
+    },
+    {
+      "en": "Trot_AIVideo_Loop",
+      "zh": "小跑循環",
+      "stage": "qa",
+      "info": "5 秒影片 → 13 格一圈",
+      "note": "可預覽，等人眼驗收"
+    },
+    {
+      "en": "Run_AIVideo_Loop",
+      "zh": "奔跑循環",
+      "stage": "qa",
+      "info": "5 秒影片 → 13 格一圈",
+      "note": "可預覽；45° 斜角影片生成中，之後核對腳序"
+    },
+    {
+      "en": "Eat_AIVideo",
+      "zh": "吃東西",
+      "stage": "qa",
+      "info": "10 秒影片 → 120 格",
+      "note": "可預覽；頭尾接回站姿"
+    },
+    {
+      "en": "Drink_AIVideo",
+      "zh": "喝水",
+      "stage": "qa",
+      "info": "10 秒影片 → 120 格",
+      "note": "可預覽；頭尾接回站姿"
+    },
+    {
+      "en": "Sit_AIVideo",
+      "zh": "坐下",
+      "stage": "video",
+      "info": "720p · 5 秒",
+      "note": "10/5 已生成，影片還沒下載到本機"
+    },
+    {
+      "en": "LieDown_AIVideo",
+      "zh": "趴下",
+      "stage": "video",
+      "info": "720p · 10 秒",
+      "note": "10/5 已生成，影片還沒下載到本機"
+    },
+    {
+      "en": "Stretch_AIVideo",
+      "zh": "伸懶腰",
+      "stage": "video",
+      "info": "720p · 10 秒",
+      "note": "10/5 已生成，影片還沒下載到本機"
+    },
+    {
+      "en": "Sniff_AIVideo",
+      "zh": "低頭嗅聞",
+      "stage": "video",
+      "info": "720p · 5 秒",
+      "note": "10/5 已生成，影片還沒下載到本機"
+    },
+    {
+      "en": "Run45_AIVideo",
+      "zh": "奔跑（45° 斜角參考）",
+      "stage": "video",
+      "info": "720p · 5 秒",
+      "note": "10/6 12:50 送中控，只當腳序參考不對骨架"
+    },
+    {
+      "en": "HungryBeg_AIVideo",
+      "zh": "討食",
+      "stage": "video",
+      "info": "720p · 5 秒",
+      "note": "10/6 下午用「微調再生成」（第一格模式）重送，Prompt 有標題與頭尾站姿；上午那版風格跑掉作廢"
+    },
+    {
+      "en": "PlayBow_AIVideo",
+      "zh": "邀玩鞠躬",
+      "stage": "video",
+      "info": "720p · 5 秒",
+      "note": "10/6 下午用「微調再生成」（第一格模式）重送，Prompt 有標題與頭尾站姿；上午那版風格跑掉作廢"
+    },
+    {
+      "en": "PawBall_AIVideo",
+      "zh": "拍球",
+      "stage": "video",
+      "info": "720p · 5 秒",
+      "note": "10/6 下午用「微調再生成」（第一格模式）重送，Prompt 有標題與頭尾站姿；上午那版風格跑掉作廢"
+    },
+    {
+      "en": "SniffAir_AIVideo",
+      "zh": "聞空氣",
+      "stage": "video",
+      "info": "720p · 5 秒",
+      "note": "10/6 下午用「微調再生成」（第一格模式）重送，Prompt 有標題與頭尾站姿；上午那版風格跑掉作廢"
+    },
+    {
+      "en": "BodyShake_Loop",
+      "zh": "全身抖毛（GPT·Blender 雙視角版）",
+      "stage": "qa",
+      "info": "正面＋側面 5 秒影片 → 120 格循環",
+      "note": "可預覽，等人眼驗收；做法見 ai-video-to-bones/docs/SHAKE.md"
+    }
+  ],
+  "miles": {
+    "5": true
+  }
+}

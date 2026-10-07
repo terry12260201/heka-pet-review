@@ -1,0 +1,82 @@
+# 需求對照（V03）。src：plan＝HEKA 寵物企劃（待 Jira FOOT-27 核對）／user＝南瓜指定補充／idea＝Claude 建議補充
+# cover：ok＝素材包現成／part＝部分可用（要接、要改或少一段）／gap＝素材包沒有
+GROUPS = [
+ ('life','基本生活','待機、走、跳、吃喝、睡、休息、探索：企劃的 7 主狀態與 8 情境動作'),
+ ('touch','觸摸反應','企劃：摸頭／耳／背／肚子，連續觸摸會升級成抖耳、擋爪、退開；反應疊在主狀態上'),
+ ('play','玩耍與道具','追球、玩具、食盆：企劃「命中區→判定→鎖定→冷卻」的道具互動'),
+ ('mood','情緒表現','興奮慶祝、撒嬌社交：企劃的心情數值與生活提醒完成時的回饋'),
+ ('ar','AR 手勢反應','企劃：揮手、伸手、蹲下、張開雙臂、傾身，各對應一個寵物反應'),
+ ('trip','旅行與明信片','出發、召回、景點定格拍照'),
+ ('user','南瓜指定補充','2026-10-07 南瓜點名要的動作'),
+ ('idea','Claude 建議補充','判斷能增加樂趣或照護價值的動作'),
+]
+R = [
+ # 基本生活
+ dict(id='life_idle',g='life',src='plan',zh='待機（自由活動）',cover='ok',clips=['Idle_1','Idle_2','Idle_3','Idle_7'],
+      desc='站著喘氣、張望、看向玩家，四支輪播就不會機械重複。',gap=''),
+ dict(id='life_walk',g='life',src='plan',zh='行走（偽 3D 忽近忽遠）',cover='ok',clips=['Walk_F_IP','Walk_L_IP','Walk_R_IP','Walk_B_IP','Turn_L_IP','Turn_R_IP','Turn_L180_IP','Turn_R180_IP'],
+      desc='原地版走路六方向＋轉身；位移交給程式控制，素材包另有位移版（RM）。',gap=''),
+ dict(id='life_jump',g='life',src='plan',zh='跳躍',cover='ok',clips=['Jump_Place_IP','Jump_F_IP','JumpStart_Up','JumpAir_Up','JumpLand','JumpStart_Down_IP'],
+      desc='原地跳、往前跳，另有起跳／空中／落地拆段，可組合跳上跳下。',gap=''),
+ dict(id='life_eat',g='life',src='plan',zh='進食（點碗餵食）',cover='ok',clips=['EatDrink_start','Eat_loop','EatDrink_end','Eat_tear'],
+      desc='低頭靠近碗→吃→抬頭，三段可接；撕咬版適合啃零食。',gap=''),
+ dict(id='life_drink',g='life',src='plan',zh='喝水',cover='ok',clips=['EatDrink_start','Drink_loop','EatDrink_end'],
+      desc='和吃飯共用開始與結束段。',gap=''),
+ dict(id='life_sleep',g='life',src='plan',zh='睡眠',cover='part',clips=['Lie_Sleep_start','Lie_Sleep_loop','Lie_Sleep_end','Lie_belly_sleep_start','Lie_belly_sleep','Lie_belly_sleep_end'],
+      desc='蜷睡、趴睡各有入睡／循環／醒來。',gap='企劃寫睡眠中要「偶發翻身」，素材包沒有翻身。'),
+ dict(id='life_rest',g='life',src='plan',zh='休息（趴、坐）',cover='ok',clips=['Lie_belly_start','Lie_belly_loop_1','Lie_belly_end','Lie_start','Lie_loop_1','Lie_end','Sitting_start','Sitting_loop_1','Sitting_end'],
+      desc='肚子貼地趴、放鬆側腿趴、坐下，都有開始／循環／結束。',gap=''),
+ dict(id='life_explore',g='life',src='plan',zh='探索（嗅聞、挖）',cover='ok',clips=['Idle_4','Idle_6','Digging_start','Digging_loop','Digging_end'],
+      desc='低頭嗅地、抬頭聞空氣、挖洞。',gap=''),
+ # 觸摸
+ dict(id='touch_head',g='touch',src='plan',zh='摸頭',cover='gap',clips=[],desc='瞇眼、抬頭往手上蹭、尾巴慢搖。',gap='素材包沒有被摸的反應。'),
+ dict(id='touch_ear',g='touch',src='plan',zh='摸耳朵→抖耳',cover='gap',clips=[],desc='被摸的那隻耳朵抖兩下、頭微歪。',gap='素材包沒有。'),
+ dict(id='touch_back',g='touch',src='plan',zh='摸背',cover='gap',clips=[],desc='背往下沉、舒服瞇眼、尾巴搖。',gap='素材包沒有。'),
+ dict(id='touch_belly',g='touch',src='plan',zh='摸肚子→翻肚',cover='gap',clips=[],desc='側倒翻肚、四腳放鬆、討摸。',gap='素材包沒有翻肚。'),
+ dict(id='touch_block',g='touch',src='plan',zh='連摸太多→擋爪',cover='gap',clips=[],desc='抬一隻前腳輕擋手。',gap='素材包沒有。'),
+ dict(id='touch_retreat',g='touch',src='plan',zh='連摸太多→退開',cover='part',clips=['Walk_B_IP','Turn_L180_IP'],
+      desc='往後退或轉身走開。',gap='有後退與轉身；缺「不耐煩」的表情與耳朵。'),
+ # 玩耍
+ dict(id='play_ball',g='play',src='plan',zh='追球',cover='part',clips=['Run_F_IP','RunFast_F_IP','Pick_up','Pick_up_idle','Put_down'],
+      desc='衝過去→叼起→叼著回來→放下，四段素材包都有。',gap='缺「撲球、用爪撥球」與追到時的停頓。'),
+ dict(id='play_toy',g='play',src='plan',zh='玩玩具',cover='part',clips=['Pick_up','Pick_up_idle','Idle_5_loop'],
+      desc='叼起玩具、前伏邀玩。',gap='缺咬著玩具甩頭、拔河。'),
+ # 情緒
+ dict(id='mood_happy',g='mood',src='plan',zh='興奮慶祝（完成生活提醒）',cover='part',clips=['Jump_Place_IP','Idle_5_loop'],
+      desc='原地跳、前伏邀玩可先頂著用。',gap='缺原地轉圈、邊跳邊搖尾這類「好開心」的慶祝。'),
+ dict(id='mood_social',g='mood',src='plan',zh='社交撒嬌',cover='part',clips=['Idle_2','Bark'],
+      desc='看向玩家、叫一聲。',gap='缺搖尾蹭人、坐著討摸；照護情境吠叫要節制。'),
+ # AR
+ dict(id='ar_wave',g='ar',src='plan',zh='揮手→看過來',cover='part',clips=['Idle_2','Bark'],desc='轉頭看向鏡頭、叫一聲回應。',gap='缺開心搖尾的回應。'),
+ dict(id='ar_reach',g='ar',src='plan',zh='伸手→靠近聞手',cover='part',clips=['Walk_F_IP','Idle_6'],desc='走近、抬頭聞。',gap='缺湊近聞手、舔手。'),
+ dict(id='ar_squat',g='ar',src='plan',zh='蹲下→跑過來',cover='ok',clips=['Run_F_IP','Sitting_start','Sitting_loop_1'],desc='跑過來後坐好看你。',gap=''),
+ dict(id='ar_arms',g='ar',src='plan',zh='張開雙臂→撲過來',cover='part',clips=['Jump_Run_IP','Jump_F_IP'],desc='邊跑邊跳、往前跳。',gap='缺撲到懷裡的收尾（站起前腳搭上來）。'),
+ dict(id='ar_lean',g='ar',src='plan',zh='傾身→歪頭',cover='gap',clips=[],desc='左右歪頭、耳朵豎起，疑惑又好奇。',gap='素材包沒有歪頭。'),
+ # 旅行
+ dict(id='trip_go',g='trip',src='plan',zh='出發與召回',cover='ok',clips=['Walk_F_IP','Run_F_IP','Turn_R180_IP'],desc='轉身離開、跑回來。',gap=''),
+ dict(id='trip_photo',g='trip',src='plan',zh='明信片定格',cover='ok',clips=['Sitting_loop_1','Idle_2','Lie_belly_loop_1'],desc='坐好、看鏡頭、趴著，挑一格當拍照姿勢。',gap=''),
+ # 南瓜指定
+ dict(id='user_bed',g='user',src='user',zh='床上睡覺',cover='part',clips=['JumpStart_Up','JumpUp_End_IP','Lie_Sleep_start','Lie_Sleep_loop','Lie_Sleep_end','JumpStart_Down_IP'],
+      desc='跳上床→蜷睡→醒來→跳下床，可用素材包拆段接起來。',gap='要對齊床的高度；缺上床後先轉一圈踩一踩再躺的動作。'),
+ dict(id='user_run',g='user',src='user',zh='跑步',cover='ok',clips=['Run_F_IP','Run_L_IP','Run_R_IP','RunFast_F_IP','Trot_F_IP'],desc='小跑、跑、衝刺三種速度，左右轉彎都有。',gap=''),
+ dict(id='user_walk',g='user',src='user',zh='走路',cover='ok',clips=['Walk_F_IP','Walk_L_IP','Walk_R_IP','Walk_B_IP','Walk_BL_IP','Walk_BR_IP'],desc='六方向走路。',gap=''),
+ dict(id='user_roll',g='user',src='user',zh='原地打滾',cover='gap',clips=[],desc='側倒、翻滾一圈、站起來甩甩頭。',gap='素材包沒有；要翻轉整隻身體，建議用 45° 斜角影片做。'),
+ dict(id='user_shake',g='user',src='user',zh='全身抖毛',cover='part',clips=['BodyShake_FromBeagle'],
+      desc='從 Beagle 的 GPT 版抖毛移植過來（兩隻是同一套骨架）。',gap='移植試做，還沒經過人眼驗收。'),
+ # Claude 建議
+ dict(id='idea_spin',g='idea',src='idea',zh='追尾巴轉圈',cover='gap',clips=[],desc='開心時原地追尾巴轉一兩圈，長者看了會笑。',gap='素材包沒有；也能當「興奮慶祝」用。'),
+ dict(id='idea_tilt',g='idea',src='idea',zh='歪頭疑惑',cover='gap',clips=[],desc='聽到聲音或長者說話時歪頭，最萌的單一表情。',gap='和 AR「傾身」共用。'),
+ dict(id='idea_stretch',g='idea',src='idea',zh='伸懶腰＋打哈欠',cover='part',clips=['Idle_5_start','Idle_5_loop','Idle_5_end'],desc='起床、睡前的過場，讓作息看起來真實。',gap='前伏那段可當伸懶腰前半；缺後腳伸展與哈欠。'),
+ dict(id='idea_wag',g='idea',src='idea',zh='開心搖尾（疊加層）',cover='gap',clips=[],desc='只動尾巴，可疊在任何動作上，回應長者說話。',gap='做成疊加層，不用整支動畫。'),
+ dict(id='idea_paw',g='idea',src='idea',zh='給爪握手',cover='gap',clips=[],desc='坐著抬一隻前腳，配合 AR 伸手，互動回饋最直接。',gap='素材包沒有。'),
+ dict(id='idea_lick',g='idea',src='idea',zh='舔手／舔鏡頭',cover='gap',clips=[],desc='湊近舔一下，親密度高時解鎖。',gap='素材包沒有。'),
+ dict(id='idea_bring',g='idea',src='idea',zh='叼東西給主人（提醒用）',cover='part',clips=['Walk_F_IP','Pick_up','Pick_up_idle','Put_down'],
+      desc='叼藥袋、水杯模型走過來放下，接生活提醒（吃藥、喝水）。',gap='四段都有，要接上道具掛點。'),
+ dict(id='idea_scratch',g='idea',src='idea',zh='後腳抓癢',cover='ok',clips=['Scratching'],desc='素材包現成，放進待機輪播增加生活感。',gap=''),
+ dict(id='idea_sneeze',g='idea',src='idea',zh='打噴嚏',cover='gap',clips=[],desc='嗅聞後偶爾打個噴嚏，小驚喜。',gap='素材包沒有。'),
+ dict(id='idea_dream',g='idea',src='idea',zh='睡夢中踢腿',cover='gap',clips=[],desc='睡著時腳抽動像在跑，可做成疊加層。',gap='素材包沒有。'),
+ dict(id='idea_sad',g='idea',src='idea',zh='低落趴著（久未互動）',cover='part',clips=['Lie_belly_loop_1'],desc='長者太久沒來時趴著、耳朵垂下，引導回來互動。',gap='缺耳朵下垂、眼神往上看的表情層。'),
+ dict(id='idea_wait',g='idea',src='idea',zh='等門、看窗外',cover='part',clips=['Sitting_loop_2','Idle_6'],desc='長者外出時坐在門口等、聞空氣。',gap='缺盯著門口、聽到聲音耳朵豎起。'),
+ dict(id='idea_swim',g='idea',src='idea',zh='水邊景點游泳',cover='ok',clips=['Swim_F_IP','Swim_idle','Swim_enter_IP'],desc='旅行到海邊、湖邊的景點可以用，素材包現成。',gap=''),
+]
+NOT_FOR_CARE = '攻擊、撲咬、被打、倒下、尿尿、大便這 13 支在照護情境不建議使用；另一支 A_Pose 是技術用的基準姿勢，不是動畫。'
